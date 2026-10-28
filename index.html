@@ -4,124 +4,826 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Ericka Guillén | Portfolio</title>
+    <title>Ericka Guillén | Animator & Visual Artist</title>
+
+    <meta name="description" content="Portfolio de Ericka Guillén, animadora y artista visual especializada en 3D, ilustración, animación y motion graphics.">
 
     <style>
-        body {
+
+        /* =========================
+           RESET
+        ========================= */
+
+        * {
             margin: 0;
-            font-family: Arial, sans-serif;
-            background: #111;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #0b0b0b;
+            color: #f5f5f5;
+            line-height: 1.6;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+
+        /* =========================
+           NAVIGATION
+        ========================= */
+
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 25px 6%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+
+            background: rgba(11, 11, 11, 0.75);
+            backdrop-filter: blur(10px);
+        }
+
+        .logo {
+            font-size: 20px;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            font-size: 14px;
+            color: #ccc;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
             color: white;
         }
 
-        header {
+
+        /* =========================
+           HERO
+        ========================= */
+
+        .hero {
             min-height: 100vh;
+
             display: flex;
             flex-direction: column;
             justify-content: center;
-            align-items: center;
-            text-align: center;
+            align-items: flex-start;
+
+            padding: 120px 10% 80px;
+
+            background:
+                radial-gradient(
+                    circle at 80% 30%,
+                    rgba(255,255,255,0.08),
+                    transparent 35%
+                );
         }
 
-        h1 {
-            font-size: 70px;
-            margin: 0;
+        .hero-small {
+            font-size: 14px;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: #888;
+
+            margin-bottom: 25px;
         }
 
-        h2 {
-            font-size: 24px;
-            font-weight: normal;
-            color: #ccc;
+        .hero h1 {
+            font-size: clamp(60px, 10vw, 150px);
+            line-height: 0.9;
+            letter-spacing: -6px;
+            max-width: 1000px;
         }
 
-        p {
+        .hero h1 span {
+            color: #777;
+        }
+
+        .hero-description {
+            margin-top: 35px;
+            max-width: 600px;
+            font-size: 20px;
             color: #aaa;
-            font-size: 18px;
         }
+
+        .hero-button {
+            display: inline-block;
+
+            margin-top: 45px;
+            padding: 15px 30px;
+
+            border: 1px solid #555;
+            border-radius: 100px;
+
+            transition: 0.3s;
+        }
+
+        .hero-button:hover {
+            background: white;
+            color: black;
+        }
+
+
+        /* =========================
+           GENERAL SECTIONS
+        ========================= */
 
         section {
-            padding: 100px 10%;
+            padding: 140px 10%;
         }
 
-        .projects {
+        .section-label {
+            font-size: 13px;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: #777;
+
+            margin-bottom: 20px;
+        }
+
+        .section-title {
+            font-size: clamp(40px, 6vw, 80px);
+            line-height: 1;
+            margin-bottom: 60px;
+        }
+
+
+        /* =========================
+           ABOUT
+        ========================= */
+
+        .about {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+        }
+
+        .about-text {
+            font-size: 25px;
+            line-height: 1.5;
+        }
+
+        .about-details {
+            color: #999;
+            font-size: 17px;
+        }
+
+        .about-details p {
+            margin-bottom: 20px;
+        }
+
+
+        /* =========================
+           SKILLS
+        ========================= */
+
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .skill {
+            border: 1px solid #333;
+            padding: 10px 18px;
+            border-radius: 100px;
+
+            font-size: 14px;
+            color: #bbb;
+        }
+
+
+        /* =========================
+           PORTFOLIO
+        ========================= */
+
+        .portfolio-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 30px;
+            gap: 25px;
         }
 
         .project {
-            background: #222;
-            padding: 50px;
-            text-align: center;
+            min-height: 450px;
+
+            background: #181818;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+
+            padding: 35px;
+
+            position: relative;
+            overflow: hidden;
+
+            transition: transform 0.4s ease;
+        }
+
+        .project:hover {
+            transform: translateY(-8px);
+        }
+
+        .project-image {
+            position: absolute;
+            inset: 0;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #222,
+                    #111
+                );
+
+            z-index: 0;
+
+            transition: transform 0.6s ease;
+        }
+
+        .project:hover .project-image {
+            transform: scale(1.05);
+        }
+
+        .project-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .project-number {
+            font-size: 13px;
+            color: #888;
+            margin-bottom: 10px;
         }
 
         .project h3 {
-            font-size: 28px;
+            font-size: 38px;
+            margin-bottom: 8px;
         }
 
-        footer {
-            padding: 50px;
-            text-align: center;
-            background: #0a0a0a;
+        .project p {
+            color: #aaa;
         }
+
+
+        /* =========================
+           FEATURED PROJECT
+        ========================= */
+
+        .featured {
+            min-height: 600px;
+
+            background:
+                linear-gradient(
+                    120deg,
+                    #181818,
+                    #080808
+                );
+
+            padding: 60px;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+
+            margin-top: 25px;
+        }
+
+        .featured h3 {
+            font-size: clamp(50px, 7vw, 100px);
+            line-height: 0.9;
+        }
+
+        .featured p {
+            max-width: 500px;
+            color: #aaa;
+            margin-top: 25px;
+        }
+
+
+        /* =========================
+           PROCESS
+        ========================= */
+
+        .process {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .process-item {
+            border-top: 1px solid #333;
+            padding-top: 25px;
+        }
+
+        .process-number {
+            color: #666;
+            font-size: 14px;
+        }
+
+        .process-item h3 {
+            margin: 20px 0 10px;
+            font-size: 25px;
+        }
+
+        .process-item p {
+            color: #888;
+        }
+
+
+        /* =========================
+           CONTACT
+        ========================= */
+
+        .contact {
+            text-align: center;
+            padding-bottom: 100px;
+        }
+
+        .contact h2 {
+            font-size: clamp(50px, 8vw, 120px);
+            line-height: 0.9;
+            margin-bottom: 40px;
+        }
+
+        .contact-email {
+            font-size: 20px;
+            color: #aaa;
+            border-bottom: 1px solid #555;
+            padding-bottom: 5px;
+        }
+
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+            border-top: 1px solid #222;
+
+            padding: 30px 6%;
+
+            display: flex;
+            justify-content: space-between;
+
+            color: #666;
+            font-size: 13px;
+        }
+
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media (max-width: 800px) {
+
+            nav {
+                padding: 20px;
+            }
+
+            .nav-links {
+                gap: 15px;
+            }
+
+            .nav-links a {
+                font-size: 12px;
+            }
+
+            .hero {
+                padding-left: 7%;
+                padding-right: 7%;
+            }
+
+            section {
+                padding: 90px 7%;
+            }
+
+            .about {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .project {
+                min-height: 350px;
+            }
+
+            .featured {
+                min-height: 450px;
+                padding: 35px;
+            }
+
+            .process {
+                grid-template-columns: 1fr;
+            }
+
+            footer {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+
     </style>
 </head>
 
+
 <body>
 
-    <header>
-        <h1>Ericka Guillén</h1>
 
-        <h2>3D Artist · Illustrator · Animator</h2>
+    <!-- =========================
+         NAVIGATION
+    ========================== -->
 
-        <p>Animación · Ilustración · Diseño de personajes · Motion Graphics</p>
+    <nav>
+
+        <div class="logo">
+            EG
+        </div>
+
+        <ul class="nav-links">
+            <li>
+                <a href="#about">About</a>
+            </li>
+
+            <li>
+                <a href="#portfolio">Portfolio</a>
+            </li>
+
+            <li>
+                <a href="#process">Process</a>
+            </li>
+
+            <li>
+                <a href="#contact">Contact</a>
+            </li>
+        </ul>
+
+    </nav>
+
+
+    <!-- =========================
+         HERO
+    ========================== -->
+
+    <header class="hero">
+
+        <div class="hero-small">
+            Animator · Visual Artist · Designer
+        </div>
+
+        <h1>
+            Ericka<br>
+            <span>Guillén.</span>
+        </h1>
+
+        <p class="hero-description">
+            Animadora y artista visual interesada en crear
+            mundos, personajes e imágenes a través del
+            movimiento, el diseño y la narrativa.
+        </p>
+
+        <a class="hero-button" href="#portfolio">
+            Ver portfolio →
+        </a>
+
     </header>
 
 
-    <section>
-        <h2>Sobre mí</h2>
+    <!-- =========================
+         ABOUT
+    ========================== -->
 
-        <p>
-            Soy animadora y artista visual recién egresada de la Universidad del Valle de México.
-            Me interesa crear mundos, personajes e imágenes que combinen narrativa, diseño y movimiento.
-        </p>
-    </section>
+    <section id="about">
 
+        <div class="section-label">
+            01 — About
+        </div>
 
-    <section>
-        <h2>Portfolio</h2>
+        <div class="about">
 
-        <div class="projects">
+            <div class="about-text">
 
-            <div class="project">
-                <h3>3D</h3>
-                <p>Escenarios, ambientes y composición.</p>
+                Soy una animadora recién egresada de la
+                Universidad del Valle de México.
+
+                <br><br>
+
+                Me interesa combinar narrativa, diseño y
+                movimiento para crear experiencias visuales
+                con personalidad.
+
             </div>
 
-            <div class="project">
-                <h3>Ilustración</h3>
-                <p>Ilustración digital y diseño visual.</p>
-            </div>
 
-            <div class="project">
-                <h3>Animación</h3>
-                <p>Animación 2D y proyectos audiovisuales.</p>
-            </div>
+            <div class="about-details">
 
-            <div class="project">
-                <h3>Motion Graphics</h3>
-                <p>Diseño gráfico en movimiento.</p>
+                <p>
+                    Mi trabajo explora diferentes disciplinas
+                    como animación 2D, 3D, ilustración,
+                    diseño de personajes y motion graphics.
+                </p>
+
+                <div class="skills">
+
+                    <span class="skill">3D Art</span>
+
+                    <span class="skill">Illustration</span>
+
+                    <span class="skill">2D Animation</span>
+
+                    <span class="skill">Character Design</span>
+
+                    <span class="skill">Motion Graphics</span>
+
+                    <span class="skill">Visual Development</span>
+
+                </div>
+
             </div>
 
         </div>
+
     </section>
 
 
-    <footer>
-        <h2>Contacto</h2>
+    <!-- =========================
+         PORTFOLIO
+    ========================== -->
 
-        <p>Ericka Guillén</p>
+    <section id="portfolio">
+
+        <div class="section-label">
+            02 — Selected Work
+        </div>
+
+        <h2 class="section-title">
+            Projects
+        </h2>
+
+
+        <div class="portfolio-grid">
+
+
+            <article class="project">
+
+                <div class="project-image"></div>
+
+                <div class="project-content">
+
+                    <div class="project-number">
+                        01
+                    </div>
+
+                    <h3>
+                        3D Environments
+                    </h3>
+
+                    <p>
+                        Escenarios, espacios y composición visual.
+                    </p>
+
+                </div>
+
+            </article>
+
+
+            <article class="project">
+
+                <div class="project-image"></div>
+
+                <div class="project-content">
+
+                    <div class="project-number">
+                        02
+                    </div>
+
+                    <h3>
+                        Illustration
+                    </h3>
+
+                    <p>
+                        Ilustración digital y exploración visual.
+                    </p>
+
+                </div>
+
+            </article>
+
+
+            <article class="project">
+
+                <div class="project-image"></div>
+
+                <div class="project-content">
+
+                    <div class="project-number">
+                        03
+                    </div>
+
+                    <h3>
+                        Character Design
+                    </h3>
+
+                    <p>
+                        Personajes, diseño y desarrollo visual.
+                    </p>
+
+                </div>
+
+            </article>
+
+
+            <article class="project">
+
+                <div class="project-image"></div>
+
+                <div class="project-content">
+
+                    <div class="project-number">
+                        04
+                    </div>
+
+                    <h3>
+                        Motion Graphics
+                    </h3>
+
+                    <p>
+                        Diseño gráfico, animación y movimiento.
+                    </p>
+
+                </div>
+
+            </article>
+
+        </div>
+
+
+        <!-- FEATURED PROJECT -->
+
+        <div class="featured">
+
+            <div class="project-number">
+                FEATURED PROJECT
+            </div>
+
+            <h3>
+                Glitch<br>
+                Scape
+            </h3>
+
+            <p>
+                Proyecto audiovisual experimental que combina
+                3D, stop motion, animación 2D y rotoscopia
+                para explorar un mundo digital nacido de un glitch.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         PROCESS
+    ========================== -->
+
+    <section id="process">
+
+        <div class="section-label">
+            03 — Process
+        </div>
+
+        <h2 class="section-title">
+            How I work
+        </h2>
+
+
+        <div class="process">
+
+
+            <div class="process-item">
+
+                <div class="process-number">
+                    01
+                </div>
+
+                <h3>
+                    Concept
+                </h3>
+
+                <p>
+                    Desarrollo de ideas, referencias,
+                    narrativa y dirección visual.
+                </p>
+
+            </div>
+
+
+            <div class="process-item">
+
+                <div class="process-number">
+                    02
+                </div>
+
+                <h3>
+                    Design
+                </h3>
+
+                <p>
+                    Exploración de personajes,
+                    escenarios, composición y estilo.
+                </p>
+
+            </div>
+
+
+            <div class="process-item">
+
+                <div class="process-number">
+                    03
+                </div>
+
+                <h3>
+                    Movement
+                </h3>
+
+                <p>
+                    Animación, edición y creación
+                    de experiencias visuales.
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         CONTACT
+    ========================== -->
+
+    <section id="contact" class="contact">
+
+        <div class="section-label">
+            04 — Contact
+        </div>
+
+        <h2>
+            Let's create<br>
+            something.
+        </h2>
+
+        <a
+            class="contact-email"
+            href="mailto:TUEMAIL@EJEMPLO.COM"
+        >
+            TUEMAIL@EJEMPLO.COM
+        </a>
+
+    </section>
+
+
+    <!-- =========================
+         FOOTER
+    ========================== -->
+
+    <footer>
+
+        <span>
+            © 2026 Ericka Guillén
+        </span>
+
+        <span>
+            Animator · Visual Artist
+        </span>
+
     </footer>
+
 
 </body>
 </html>
