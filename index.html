@@ -1,15 +1,15 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ericka Guillén | Portfolio</title>
+
+  <title>Portfolio 2026</title>
 
   <style>
-    /* =====================================
-       1. DISEÑO GENERAL
-       ===================================== */
+    /* ==================================
+       1. CONFIGURACIÓN GENERAL
+       ================================== */
 
     * {
       margin: 0;
@@ -17,129 +17,179 @@
       box-sizing: border-box;
     }
 
-    body {
-      background: #080808;
-      color: #ffffff;
-      font-family: Helvetica, Arial, sans-serif;
+    html {
+      scroll-behavior: smooth;
     }
 
-    /* =====================================
-       2. PORTADA PRINCIPAL
-       ===================================== */
+    body {
+      background-color: #080808;
+      font-family: Helvetica, Arial, sans-serif;
+      color: white;
+    }
+
+    /* ==================================
+       2. PORTADA CON TU IMAGEN
+       ================================== */
 
     .portada {
       width: 100%;
-      min-height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      position: relative;
-      overflow: hidden;
+      height: 100vh;
+      min-height: 500px;
 
-      /* CAMBIA ESTA IMAGEN CUANDO SUBAS TU PORTADA */
-      background-image: url("assets/portada.jpeg");
-
+      background-image: url("PORTAFOLIO-202026.png");
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
-    }
 
-    /* Oscurece un poco la portada para que el texto destaque */
-    .portada::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(
-        135deg,
-        rgba(0,0,0,0.25),
-        rgba(20,0,35,0.25)
-      );
-    }
-
-    /* =====================================
-       3. TEXTO Y BOTÓN DE ENTRADA
-       ===================================== */
-
-    .contenido {
       position: relative;
-      z-index: 1;
-      text-align: center;
-      padding: 30px;
     }
 
-    .contenido h1 {
-      font-size: clamp(2.5rem, 8vw, 6rem);
-      font-weight: 900;
-      letter-spacing: -4px;
-      text-transform: uppercase;
+    /* ==================================
+       3. BOTONES DE REDES SOCIALES
+       ================================== */
+
+    .redes {
+      position: absolute;
+      bottom: 35px;
+      right: 40px;
+
+      display: flex;
+      gap: 12px;
+      align-items: center;
     }
 
-    .contenido p {
-      color: #d9b5ff;
-      margin-top: 15px;
-      font-size: 1rem;
-      letter-spacing: 3px;
-    }
-
-    .boton {
-      display: inline-block;
-      margin-top: 35px;
-      padding: 15px 38px;
-      border: 1px solid #c58aff;
+    .redes a {
       color: white;
       text-decoration: none;
-      font-size: 0.9rem;
-      letter-spacing: 2px;
+
+      border: 1px solid #c9a0ff;
+      padding: 10px 16px;
+
+      font-size: 12px;
+      letter-spacing: 1px;
+
       transition: 0.3s;
     }
 
-    .boton:hover {
-      background: #c58aff;
+    .redes a:hover {
+      background-color: #c9a0ff;
       color: #080808;
     }
 
-    /* =====================================
-       4. RESPONSIVE: CELULARES
-       ===================================== */
+    /* ==================================
+       4. INDICADOR PARA DESLIZAR
+       ================================== */
+
+    .indicador {
+      position: absolute;
+      bottom: 35px;
+      left: 40px;
+
+      color: white;
+      font-size: 11px;
+      letter-spacing: 2px;
+      opacity: 0.8;
+    }
+
+    /* ==================================
+       5. ESPACIO DEL ÍNDICE
+       ================================== */
+
+    .indice {
+      min-height: 100vh;
+      padding: 100px 8%;
+      background: #080808;
+    }
+
+    .indice h2 {
+      color: #c9a0ff;
+      font-size: clamp(35px, 6vw, 70px);
+      margin-bottom: 40px;
+    }
+
+    /* Aquí agregaremos los apartados
+       del portafolio más adelante. */
+
+    /* ==================================
+       6. ADAPTACIÓN PARA CELULARES
+       ================================== */
 
     @media (max-width: 600px) {
-      .contenido h1 {
-        letter-spacing: -2px;
-      }
-
-      .contenido p {
-        font-size: 0.75rem;
-        line-height: 1.6;
-      }
 
       .portada {
         background-position: center;
       }
+
+      .redes {
+        right: 15px;
+        bottom: 20px;
+        gap: 6px;
+      }
+
+      .redes a {
+        padding: 9px 10px;
+        font-size: 10px;
+      }
+
+      .indicador {
+        left: 15px;
+        bottom: 85px;
+        font-size: 9px;
+      }
     }
+
   </style>
 </head>
 
 <body>
 
-  <!-- =====================================
+  <!-- ==================================
        PORTADA PRINCIPAL
-       Aquí aparece tu imagen de bienvenida.
-       ===================================== -->
+       ================================== -->
 
   <section class="portada">
 
-    <div class="contenido">
+    <!-- BOTONES DE REDES SOCIALES -->
 
-      <h1>Ericka Guillén</h1>
+    <div class="redes">
 
-      <p>3D ARTIST · ILLUSTRATOR · ANIMATOR</p>
+      <!-- CAMBIA LOS ENLACES POR LOS TUYOS -->
 
-      <!-- BOTÓN PARA ENTRAR AL PORTAFOLIO -->
-      <a href="portfolio.html" class="boton">
-        COMENZAR →
+      <a href="https://www.instagram.com/TUUSUARIO/"
+         target="_blank">
+        INSTAGRAM
+      </a>
+
+      <a href="https://www.tiktok.com/@TUUSUARIO"
+         target="_blank">
+        TIKTOK
+      </a>
+
+      <a href="https://www.linkedin.com/in/TUPERFIL/"
+         target="_blank">
+        LINKEDIN
       </a>
 
     </div>
+
+    <!-- INDICADOR DE DESPLAZAMIENTO -->
+
+    <div class="indicador">
+      SCROLL TO EXPLORE ↓
+    </div>
+
+  </section>
+
+
+  <!-- ==================================
+       ÍNDICE (LO DESARROLLAREMOS DESPUÉS)
+       ================================== -->
+
+  <section class="indice" id="indice">
+
+    <h2>ÍNDICE</h2>
+
+    <!-- AQUÍ COLOCAREMOS LAS SECCIONES -->
 
   </section>
 
