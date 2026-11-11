@@ -9,10 +9,9 @@
 <style>
 :root {
     --black: #09080D;
-    --black-soft: #100D15;
     --panel: #17121F;
     --lilac: #BB9AFF;
-    --lilac-light: #DCCAFF;
+    --light: #DCCAFF;
     --purple: #6335A0;
     --white: #F7F2FC;
     --muted: #B5A9C3;
@@ -25,9 +24,7 @@
     padding: 0;
 }
 
-html {
-    scroll-behavior: smooth;
-}
+html { scroll-behavior: smooth; }
 
 body {
     background: var(--black);
@@ -35,25 +32,15 @@ body {
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
-button, a {
-    font: inherit;
-}
-
 a {
     color: inherit;
     text-decoration: none;
 }
 
-button {
-    cursor: pointer;
-}
+button { font: inherit; cursor: pointer; }
 
 /* TEXTURA GRANULADA */
-
-.grain {
-    position: relative;
-    isolation: isolate;
-}
+.grain { position: relative; isolation: isolate; }
 
 .grain::after {
     content: "";
@@ -61,45 +48,33 @@ button {
     inset: 0;
     z-index: 0;
     pointer-events: none;
-    opacity: 0.12;
+    opacity: .12;
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.65'/%3E%3C/svg%3E");
 }
 
 /* PORTADA */
-
 #portada {
     min-height: 100vh;
     display: flex;
     align-items: center;
-    justify-content: center;
     padding: 50px 8%;
-    overflow: hidden;
     background:
-        radial-gradient(
-            ellipse at 75% 35%,
-            rgba(99, 53, 160, 0.30),
-            transparent 55%
-        ),
-        linear-gradient(
-            135deg,
-            #09080D 0%,
-            #171020 55%,
-            #09080D 100%
-        );
+        radial-gradient(ellipse at 75% 35%, rgba(99,53,160,.30), transparent 55%),
+        linear-gradient(135deg, #09080D, #171020 55%, #09080D);
+    overflow: hidden;
 }
 
 .cover-content {
-    width: 100%;
     max-width: 1200px;
+    width: 100%;
     position: relative;
     z-index: 1;
 }
 
 .cover-label {
     color: var(--lilac);
-    font-size: 0.78rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
+    font-size: .78rem;
+    letter-spacing: .2em;
     margin-bottom: 30px;
 }
 
@@ -107,8 +82,8 @@ button {
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-weight: 900;
     font-size: clamp(3.5rem, 10vw, 9rem);
-    letter-spacing: -0.075em;
-    line-height: 0.86;
+    letter-spacing: -.075em;
+    line-height: .86;
     text-transform: uppercase;
 }
 
@@ -119,8 +94,8 @@ button {
 
 .cover-bottom {
     display: flex;
-    align-items: center;
     justify-content: space-between;
+    align-items: center;
     gap: 25px;
     flex-wrap: wrap;
     margin-top: 55px;
@@ -128,112 +103,89 @@ button {
 
 .cover-bottom p {
     color: var(--muted);
-    font-size: 0.9rem;
-    letter-spacing: 0.08em;
+    font-size: .9rem;
+    letter-spacing: .08em;
 }
 
 .start-btn {
-    display: inline-block;
     background: var(--lilac);
     color: var(--black);
     border: none;
     padding: 16px 30px;
     font-weight: 800;
     text-transform: uppercase;
-    letter-spacing: 0.08em;
-    transition: 0.3s;
+    transition: .3s;
 }
 
 .start-btn:hover {
-    background: var(--lilac-light);
+    background: var(--light);
     transform: translateY(-3px);
-    box-shadow: 0 10px 30px #BB9AFF40;
 }
 
 /* NAVEGACIÓN */
-
 header {
     position: sticky;
     top: 0;
     z-index: 20;
-    display: flex;
+    display: none;
     justify-content: space-between;
     align-items: center;
     gap: 20px;
     padding: 20px 7%;
-    background: rgba(9, 8, 13, 0.95);
+    background: rgba(9,8,13,.96);
     border-bottom: 1px solid var(--line);
     backdrop-filter: blur(12px);
 }
 
-.logo {
-    font-size: 1rem;
-    font-weight: 900;
-    letter-spacing: -0.04em;
-}
-
-.logo span {
-    color: var(--lilac);
-}
+.logo { font-weight: 900; }
+.logo span { color: var(--lilac); }
 
 .nav-links {
     display: flex;
-    gap: 28px;
     flex-wrap: wrap;
+    gap: 25px;
 }
 
 .nav-links button {
     border: none;
     background: transparent;
     color: var(--muted);
-    font-size: 0.85rem;
-    transition: 0.2s;
+    font-size: .85rem;
 }
 
 .nav-links button:hover,
-.nav-links button.active {
-    color: var(--lilac);
-}
+.nav-links button.active { color: var(--lilac); }
 
 /* PÁGINAS */
-
 .page {
     display: none;
     min-height: 100vh;
     padding: 75px 8%;
     background:
-        radial-gradient(
-            ellipse at 90% 5%,
-            rgba(99, 53, 160, 0.12),
-            transparent 40%
-        ),
-        linear-gradient(145deg, #17101F 0%, #110D17 45%, #09080D 100%);
-    position: relative;
+        radial-gradient(ellipse at 90% 5%, rgba(99,53,160,.12), transparent 40%),
+        linear-gradient(145deg, #17101F, #110D17 45%, #09080D);
 }
 
-.page.active {
-    display: block;
-}
+.page.active { display: block; }
 
 .page-content {
     max-width: 1200px;
-    margin: 0 auto;
+    margin: auto;
     position: relative;
     z-index: 1;
 }
 
 .eyebrow {
     color: var(--lilac);
-    font-size: 0.78rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
+    font-size: .78rem;
+    letter-spacing: .2em;
     margin-bottom: 15px;
 }
 
 .page-title {
     font-size: clamp(2.8rem, 7vw, 5.5rem);
-    line-height: 0.95;
-    letter-spacing: -0.07em;
+    line-height: .95;
+    letter-spacing: -.07em;
     font-weight: 900;
     text-transform: uppercase;
     margin-bottom: 25px;
@@ -247,7 +199,6 @@ header {
 }
 
 /* ÍNDICE PRINCIPAL */
-
 .index-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -261,9 +212,9 @@ header {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    background: linear-gradient(135deg, #29183A, #17121F 75%);
+    background: linear-gradient(135deg, #29183A, #17121F);
     border: 1px solid #49305E;
-    transition: 0.3s;
+    transition: .3s;
 }
 
 .index-card:hover {
@@ -272,35 +223,20 @@ header {
     transform: translateY(-5px);
 }
 
-.index-card small {
-    color: var(--lilac);
-    letter-spacing: 0.15em;
-}
-
-.index-card h3 {
-    font-size: 2rem;
-    letter-spacing: -0.05em;
-}
-
-.index-card p {
-    color: var(--muted);
-    line-height: 1.6;
-    margin-top: 10px;
-}
+.index-card small { color: var(--lilac); }
+.index-card h3 { font-size: 2rem; letter-spacing: -.05em; }
+.index-card p { color: var(--muted); line-height: 1.6; margin-top: 10px; }
 
 /* SOBRE MÍ */
-
 .about-layout {
     display: grid;
-    grid-template-columns: 1.2fr 0.8fr;
+    grid-template-columns: 1.2fr .8fr;
     gap: 45px;
-    align-items: start;
 }
 
 .about-text {
     color: var(--muted);
     line-height: 1.9;
-    max-width: 700px;
 }
 
 .about-placeholder {
@@ -312,7 +248,7 @@ header {
     justify-content: center;
     text-align: center;
     padding: 25px;
-    color: var(--lilac-light);
+    color: var(--light);
 }
 
 .skills {
@@ -327,11 +263,10 @@ header {
     color: var(--lilac);
     background: #211331;
     padding: 9px 14px;
-    font-size: 0.8rem;
+    font-size: .8rem;
 }
 
-/* ÍNDICE DEL PORTAFOLIO */
-
+/* ÍNDICE DE CARPETAS */
 .portfolio-index {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -340,11 +275,10 @@ header {
 }
 
 .portfolio-index a {
-    display: block;
     padding: 20px 22px;
     background: linear-gradient(110deg, #281735, #17121F);
     border: 1px solid #49305E;
-    transition: 0.25s;
+    transition: .25s;
 }
 
 .portfolio-index a:hover {
@@ -353,39 +287,31 @@ header {
     transform: translateX(5px);
 }
 
-.portfolio-index .number {
+.number {
     display: block;
     color: var(--lilac);
-    font-size: 0.75rem;
+    font-size: .75rem;
     margin-bottom: 8px;
-    letter-spacing: 0.12em;
 }
 
-.portfolio-index strong {
-    font-size: 1.1rem;
-}
-
-/* CATEGORÍAS */
-
+/* SECCIONES DE TRABAJO */
 .work-section {
     border-top: 1px solid #49305E;
     padding: 55px 0;
     scroll-margin-top: 100px;
 }
 
-.work-heading {
-    margin-bottom: 25px;
-}
+.work-heading { margin-bottom: 25px; }
 
 .work-heading span {
     color: var(--lilac);
-    font-size: 0.8rem;
-    letter-spacing: 0.15em;
+    font-size: .8rem;
+    letter-spacing: .15em;
 }
 
 .work-heading h3 {
     font-size: clamp(2rem, 5vw, 3.5rem);
-    letter-spacing: -0.06em;
+    letter-spacing: -.06em;
     margin-top: 8px;
 }
 
@@ -396,7 +322,6 @@ header {
 }
 
 /* SUBCARPETAS 3D */
-
 .subfolder {
     margin: 35px 0 45px;
     padding-left: 20px;
@@ -405,21 +330,18 @@ header {
 }
 
 .subfolder h4 {
-    color: var(--lilac-light);
+    color: var(--light);
     font-size: 1.4rem;
     margin-bottom: 10px;
 }
 
 .subfolder-label {
     color: var(--muted);
-    font-size: 0.75rem;
-    letter-spacing: 0.12em;
+    font-size: .75rem;
     margin-bottom: 20px;
-    text-transform: uppercase;
 }
 
 /* GALERÍA */
-
 .gallery {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -430,25 +352,23 @@ header {
     overflow: hidden;
     background: linear-gradient(145deg, #241633, #110D17);
     border: 1px solid var(--line);
-    transition: 0.3s;
+    transition: .3s;
 }
 
 .project-card:hover {
     border-color: var(--lilac);
     transform: translateY(-4px);
-    box-shadow: 0 10px 30px #6335A022;
 }
 
 .project-media {
     aspect-ratio: 16 / 10;
     width: 100%;
-    background:
-        radial-gradient(circle at 50% 40%, #49305F, #17121F 70%);
+    background: radial-gradient(circle at 50% 40%, #49305F, #17121F 70%);
     display: flex;
     justify-content: center;
     align-items: center;
     overflow: hidden;
-    color: var(--lilac-light);
+    color: var(--light);
     text-align: center;
     padding: 20px;
 }
@@ -461,15 +381,12 @@ header {
     display: block;
 }
 
-.project-info {
-    padding: 20px;
-}
+.project-info { padding: 20px; }
 
 .project-info small {
     color: var(--lilac);
-    font-size: 0.72rem;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
+    font-size: .72rem;
+    letter-spacing: .12em;
 }
 
 .project-info h4 {
@@ -479,104 +396,66 @@ header {
 
 .project-info p {
     color: var(--muted);
-    font-size: 0.88rem;
+    font-size: .88rem;
     line-height: 1.6;
 }
 
 /* CONTACTO */
-
 .contact {
     margin-top: 60px;
     padding: 35px;
-    background: linear-gradient(120deg, #39204F, #17121F 80%);
+    background: linear-gradient(120deg, #39204F, #17121F);
     border: 1px solid var(--purple);
 }
 
-.contact h3 {
-    font-size: 1.8rem;
-    margin-bottom: 12px;
-}
-
-.contact p {
-    color: var(--muted);
-    line-height: 1.7;
-}
-
-.contact a {
-    display: inline-block;
-    color: var(--lilac-light);
-    margin-top: 15px;
-}
-
-/* PIE DE PÁGINA */
+.contact h3 { font-size: 1.8rem; margin-bottom: 12px; }
+.contact p { color: var(--muted); line-height: 1.7; }
+.contact a { display: inline-block; color: var(--light); margin-top: 15px; }
 
 footer {
     padding: 25px 8%;
     border-top: 1px solid var(--line);
     color: var(--muted);
-    font-size: 0.75rem;
+    font-size: .75rem;
     text-align: center;
     background: var(--black);
 }
 
-/* RESPONSIVE */
-
+/* CELULARES */
 @media (max-width: 700px) {
-    header {
-        align-items: flex-start;
-        flex-direction: column;
-    }
-
-    .nav-links {
-        gap: 18px;
-    }
-
-    .page {
-        padding: 55px 6%;
-    }
-
-    .index-grid,
-    .portfolio-index,
-    .gallery,
-    .about-layout {
+    header { align-items: flex-start; flex-direction: column; }
+    .nav-links { gap: 18px; }
+    .page { padding: 55px 6%; }
+    .index-grid, .portfolio-index, .gallery, .about-layout {
         grid-template-columns: 1fr;
     }
-
-    .cover-bottom {
-        align-items: flex-start;
-        flex-direction: column;
-    }
-
-    .index-card {
-        min-height: 180px;
-    }
+    .cover-bottom { align-items: flex-start; flex-direction: column; }
+    .index-card { min-height: 180px; }
 }
 </style>
 </head>
 
 <body>
 
-<!-- PORTADA INICIAL -->
+<!-- =========================================
+     PORTADA INICIAL
+     ========================================= -->
 <section id="portada" class="grain">
     <div class="cover-content">
         <p class="cover-label">PORTFOLIO · 2026</p>
-
-        <h1>
-            ERICKA
-            <span>GUILLÉN.</span>
-        </h1>
+        <h1>ERICKA <span>GUILLÉN.</span></h1>
 
         <div class="cover-bottom">
             <p>3D ARTIST · ILLUSTRATOR · ANIMATOR</p>
             <button class="start-btn" onclick="showPage('indice')">
-                Comenzar →
+                COMENZAR →
             </button>
         </div>
     </div>
 </section>
 
-<!-- NAVEGACIÓN -->
-<header id="mainHeader" style="display:none;">
+<!-- MENÚ DE NAVEGACIÓN -->
+<header id="mainHeader">
     <a class="logo" href="#" onclick="showPage('indice'); return false;">
         ERICKA <span>GUILLÉN.</span>
     </a>
@@ -588,41 +467,48 @@ footer {
     </nav>
 </header>
 
-<!-- ÍNDICE PRINCIPAL -->
+<!-- =========================================
+     PÁGINA 01: ÍNDICE
+     ========================================= -->
 <main id="indice" class="page grain">
     <div class="page-content">
         <p class="eyebrow">BIENVENIDO/A A MI PORTAFOLIO</p>
-        <h2 class="page-title">Índice<span style="color:#BB9AFF;">.</span></h2>
+        <h2 class="page-title">Índice<span style="color:#BB9AFF">.</span></h2>
+
         <p class="page-intro">
             Un espacio dedicado a explorar ideas, crear mundos y contar
             historias a través de la animación, el diseño y la imagen.
         </p>
 
         <div class="index-grid">
-            <a href="#" class="index-card" onclick="showPage('sobre-mi'); return false;">
+            <a href="#" class="index-card"
+               onclick="showPage('sobre-mi'); return false;">
                 <small>01 / PERFIL</small>
                 <div>
                     <h3>Sobre mí ↗</h3>
-                    <p>Conoce un poco más sobre mi perfil, intereses y habilidades.</p>
+                    <p>Conoce más sobre mi perfil, intereses y habilidades.</p>
                 </div>
             </a>
 
-            <a href="#" class="index-card" onclick="showPage('portafolio'); return false;">
+            <a href="#" class="index-card"
+               onclick="showPage('portafolio'); return false;">
                 <small>02 / PROYECTOS</small>
                 <div>
                     <h3>Portafolio ↗</h3>
-                    <p>Explora mis proyectos de 3D, personajes, motion graphics e ilustración.</p>
+                    <p>Explora mis proyectos y trabajos creativos.</p>
                 </div>
             </a>
         </div>
     </div>
 </main>
 
-<!-- SOBRE MÍ -->
+<!-- =========================================
+     PÁGINA 02: SOBRE MÍ
+     ========================================= -->
 <section id="sobre-mi" class="page grain">
     <div class="page-content">
         <p class="eyebrow">01 / PERFIL</p>
-        <h2 class="page-title">Sobre mí<span style="color:#BB9AFF;">.</span></h2>
+        <h2 class="page-title">Sobre mí<span style="color:#BB9AFF">.</span></h2>
 
         <div class="about-layout">
             <div>
@@ -645,15 +531,28 @@ footer {
                 </div>
             </div>
 
+            <!-- INSTRUCCIONES:
+                 Para poner tu foto, guarda tu imagen en:
+                 assets/foto-perfil.jpg
+                 Después reemplaza este bloque por:
+                 <img src="assets/foto-perfil.jpg"
+                      alt="Fotografía de Ericka"
+                      style="width:100%;height:100%;object-fit:cover;">
+            -->
             <div class="about-placeholder">
                 Aquí puedes colocar tu fotografía,
-                autorretrato o una ilustración personal.
+                autorretrato o ilustración personal.
             </div>
         </div>
 
         <div class="contact">
             <h3>¡Hablemos!</h3>
             <p>Estoy abierta a nuevas oportunidades y proyectos creativos.</p>
+
+            <!-- INSTRUCCIONES:
+                 Sustituye TU_CORREO por tu correo real
+                 tanto en el enlace como en el texto visible.
+            -->
             <a href="mailto:TU_CORREO@EJEMPLO.COM">
                 TU_CORREO@EJEMPLO.COM ↗
             </a>
@@ -661,11 +560,14 @@ footer {
     </div>
 </section>
 
-<!-- PORTAFOLIO -->
+<!-- =========================================
+     PÁGINA 03: PORTAFOLIO
+     ========================================= -->
 <section id="portafolio" class="page grain">
     <div class="page-content">
+
         <p class="eyebrow">02 / PROYECTOS SELECCIONADOS</p>
-        <h2 class="page-title">Portafolio<span style="color:#BB9AFF;">.</span></h2>
+        <h2 class="page-title">Portafolio<span style="color:#BB9AFF">.</span></h2>
 
         <p class="page-intro">
             Explora mis proyectos organizados por disciplina.
@@ -695,8 +597,11 @@ footer {
             </a>
         </div>
 
-        <!-- CARPETA 01: 3D -->
+        <!-- =====================================
+             CARPETA 01: 3D
+             ===================================== -->
         <section id="carpeta-3d" class="work-section">
+
             <div class="work-heading">
                 <span>CARPETA 01</span>
                 <h3>3D</h3>
@@ -706,44 +611,73 @@ footer {
             <!-- SUBCARPETA 01.1: ESCENARIOS -->
             <div id="escenarios" class="subfolder">
                 <h4>01.1 / Escenarios</h4>
-                <p class="subfolder-label">Environment design · 3D environments</p>
+                <p class="subfolder-label">ENVIRONMENT DESIGN · 3D ENVIRONMENTS</p>
 
                 <div class="gallery">
+
+                    <!-- PROYECTO DE EJEMPLO:
+                         Para agregar tu trabajo:
+                         1. Sube tu imagen a:
+                            assets/3D/escenarios/
+                         2. Cambia el texto de src por el nombre
+                            exacto de tu imagen.
+                         3. Cambia el título y la descripción.
+                    -->
                     <article class="project-card">
                         <div class="project-media">
-                            <span>Espacio para imagen o video de escenario 3D</span>
+                            <span>AGREGA AQUÍ TU IMAGEN</span>
                         </div>
+
                         <div class="project-info">
                             <small>ESCENARIOS 3D</small>
                             <h4>Nombre del proyecto</h4>
-                            <p>Agrega aquí una breve descripción del escenario.</p>
+                            <p>Descripción breve de tu escenario.</p>
                         </div>
                     </article>
+
+                    <!-- PARA AGREGAR OTRO PROYECTO:
+                         Copia el article completo de arriba,
+                         pégalo debajo y cambia sus datos.
+                    -->
+
                 </div>
             </div>
 
             <!-- SUBCARPETA 01.2: TEXTURIZADO -->
             <div id="texturizado" class="subfolder">
                 <h4>01.2 / Texturizado</h4>
-                <p class="subfolder-label">Texturing · Materials</p>
+                <p class="subfolder-label">TEXTURING · MATERIALS</p>
 
                 <div class="gallery">
+
+                    <!-- INSTRUCCIONES:
+                         Guarda tus imágenes en:
+                         assets/3D/texturizado/
+                         Para mostrar una imagen, reemplaza el
+                         contenido de project-media por el bloque img
+                         que encontrarás al final de este archivo.
+                    -->
                     <article class="project-card">
                         <div class="project-media">
-                            <span>Espacio para imagen o video de texturizado</span>
+                            <span>AGREGA AQUÍ TU IMAGEN</span>
                         </div>
+
                         <div class="project-info">
                             <small>TEXTURIZADO</small>
                             <h4>Nombre del proyecto</h4>
-                            <p>Agrega aquí una breve descripción de materiales y texturas.</p>
+                            <p>Descripción breve de tus materiales y texturas.</p>
                         </div>
                     </article>
+
                 </div>
             </div>
         </section>
 
-        <!-- CARPETA 02: DISEÑO DE PERSONAJES -->
+        <!-- =====================================
+             CARPETA 02: DISEÑO DE PERSONAJES
+             ===================================== -->
         <section id="carpeta-personajes" class="work-section">
+
             <div class="work-heading">
                 <span>CARPETA 02</span>
                 <h3>Diseño de personajes</h3>
@@ -751,21 +685,32 @@ footer {
             </div>
 
             <div class="gallery">
+
+                <!-- INSTRUCCIONES:
+                     Guarda tus imágenes en:
+                     assets/diseno-personajes/
+                     Para agregar más personajes, copia este article.
+                -->
                 <article class="project-card">
                     <div class="project-media">
-                        <span>Espacio para imagen o video de personaje</span>
+                        <span>AGREGA AQUÍ TU IMAGEN</span>
                     </div>
+
                     <div class="project-info">
                         <small>CHARACTER DESIGN</small>
                         <h4>Nombre del proyecto</h4>
-                        <p>Agrega aquí una breve descripción del personaje.</p>
+                        <p>Descripción breve de tu personaje.</p>
                     </div>
                 </article>
+
             </div>
         </section>
 
-        <!-- CARPETA 03: MOTION GRAPHICS -->
+        <!-- =====================================
+             CARPETA 03: MOTION GRAPHICS
+             ===================================== -->
         <section id="carpeta-motion" class="work-section">
+
             <div class="work-heading">
                 <span>CARPETA 03</span>
                 <h3>Motion graphics</h3>
@@ -773,21 +718,34 @@ footer {
             </div>
 
             <div class="gallery">
+
+                <!-- INSTRUCCIONES:
+                     Guarda tus videos en:
+                     assets/motion-graphics/
+                     Puedes usar MP4.
+                     Reemplaza project-media con el bloque video
+                     que encontrarás al final del archivo.
+                -->
                 <article class="project-card">
                     <div class="project-media">
-                        <span>Espacio para video o imagen de motion graphics</span>
+                        <span>AGREGA AQUÍ TU VIDEO</span>
                     </div>
+
                     <div class="project-info">
                         <small>MOTION GRAPHICS</small>
                         <h4>Nombre del proyecto</h4>
-                        <p>Agrega aquí una breve descripción de la pieza.</p>
+                        <p>Descripción breve de tu animación.</p>
                     </div>
                 </article>
+
             </div>
         </section>
 
-        <!-- CARPETA 04: ILUSTRACIÓN DIGITAL -->
+        <!-- =====================================
+             CARPETA 04: ILUSTRACIÓN DIGITAL
+             ===================================== -->
         <section id="carpeta-ilustracion" class="work-section">
+
             <div class="work-heading">
                 <span>CARPETA 04</span>
                 <h3>Ilustración digital</h3>
@@ -795,16 +753,24 @@ footer {
             </div>
 
             <div class="gallery">
+
+                <!-- INSTRUCCIONES:
+                     Guarda tus imágenes en:
+                     assets/ilustracion-digital/
+                     Copia el article para agregar más ilustraciones.
+                -->
                 <article class="project-card">
                     <div class="project-media">
-                        <span>Espacio para imagen de ilustración digital</span>
+                        <span>AGREGA AQUÍ TU IMAGEN</span>
                     </div>
+
                     <div class="project-info">
                         <small>DIGITAL ILLUSTRATION</small>
                         <h4>Nombre del proyecto</h4>
-                        <p>Agrega aquí una breve descripción de la ilustración.</p>
+                        <p>Descripción breve de tu ilustración.</p>
                     </div>
                 </article>
+
             </div>
         </section>
 
@@ -815,6 +781,7 @@ footer {
                 TU_CORREO@EJEMPLO.COM ↗
             </a>
         </div>
+
     </div>
 </section>
 
@@ -822,7 +789,24 @@ footer {
     © 2026 ERICKA GUILLÉN · PORTFOLIO
 </footer>
 
+<!-- =========================================
+     SCRIPT: NAVEGACIÓN
+     ========================================= -->
 <script>
+/*
+INSTRUCCIONES PARA ERICKA:
+
+Esta parte controla los botones de navegación.
+No necesitas modificarla para agregar trabajos.
+
+- showPage('indice') abre el índice.
+- showPage('sobre-mi') abre Sobre mí.
+- showPage('portafolio') abre el portafolio.
+
+Si agregamos nuevas páginas en el futuro,
+aquí podremos añadir su navegación.
+*/
+
 const portada = document.getElementById("portada");
 const header = document.getElementById("mainHeader");
 const pages = document.querySelectorAll(".page");
@@ -854,6 +838,7 @@ function showPage(pageId) {
         behavior: "smooth"
     });
 }
+
 </script>
 
 </body>
