@@ -1,242 +1,33 @@
 
-/* =========================
-   NUEVA IDENTIDAD VISUAL
-   NEGRO + MORADOS
-========================= */
-
-:root {
-    --bg: #09080D;
-    --panel: #17121F;
-    --text: #F7F2FC;
-    --muted: #B5A9C3;
-    --accent: #BB9AFF;
-    --line: #382844;
-
-    --purple-dark: #211331;
-    --purple-mid: #6335A0;
-    --purple-light: #BB9AFF;
-}
-
-/* FONDO GENERAL */
-
-body {
-    background: #09080D;
-    color: #F7F2FC;
-}
-
-/* PORTADA: NEGRO Y LIMPIO */
-
+/* PORTADA: degradado y grano */
 #portada {
-    background: #09080D;
+    background:
+        radial-gradient(
+            ellipse at 75% 35%,
+            rgba(99, 53, 160, 0.30),
+            transparent 55%
+        ),
+        linear-gradient(
+            135deg,
+            #09080D 0%,
+            #171020 55%,
+            #09080D 100%
+        );
     position: relative;
     overflow: hidden;
 }
 
-#portada h1 span {
-    color: #BB9AFF;
+#portada::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.13;
+    z-index: 0;
+    background-image: url("https://www.transparenttextures.com/patterns/noise.png");
 }
 
-#portada .cover-label {
-    color: #BB9AFF;
-}
-
-/* DEGRADADO EN SECCIONES */
-
-.page {
-    background:
-        linear-gradient(
-            145deg,
-            #17101F 0%,
-            #110D17 45%,
-            #09080D 100%
-        );
-}
-
-/* ÍNDICE PRINCIPAL */
-
-.index-card {
-    background:
-        linear-gradient(
-            135deg,
-            #29183A,
-            #17121F 75%
-        );
-    border: 1px solid #49305E;
-}
-
-.index-card:hover {
-    background:
-        linear-gradient(
-            135deg,
-            #49305F,
-            #211331
-        );
-    border-color: #BB9AFF;
-}
-
-/* ÍNDICE DEL PORTAFOLIO */
-
-.portfolio-index a {
-    background:
-        linear-gradient(
-            110deg,
-            #281735,
-            #17121F
-        );
-    border: 1px solid #49305E;
-}
-
-.portfolio-index a:hover {
-    background:
-        linear-gradient(
-            110deg,
-            #6335A0,
-            #29183A
-        );
-    border-color: #BB9AFF;
-}
-
-.portfolio-index .num {
-    color: #BB9AFF;
-}
-
-/* TÍTULOS DE CATEGORÍAS */
-
-.work-section {
-    border-top: 1px solid #49305E;
-}
-
-.work-heading span {
-    color: #BB9AFF;
-}
-
-.work-heading h3 {
-    background:
-        linear-gradient(
-            90deg,
-            #FFFFFF,
-            #BB9AFF
-        );
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-}
-
-/* GALERÍAS */
-
-.project-card {
-    background:
-        linear-gradient(
-            145deg,
-            #241633,
-            #110D17
-        );
-    border: 1px solid #382844;
-}
-
-.project-card:hover {
-    border-color: #BB9AFF;
-    box-shadow: 0 10px 30px #6335A022;
-}
-
-.project-info small {
-    color: #BB9AFF;
-}
-
-/* SOBRE MÍ */
-
-.about-image {
-    background:
-        linear-gradient(
-            135deg,
-            #49305F,
-            #17121F
-        );
-    border-color: #49305E;
-}
-
-/* HABILIDADES */
-
-.skill {
-    border-color: #6335A0;
-    color: #BB9AFF;
-    background: #211331;
-}
-
-/* CONTACTO */
-
-.contact {
-    background:
-        linear-gradient(
-            120deg,
-            #39204F,
-            #17121F 80%
-        );
-    border-color: #6335A0;
-}
-
-.contact a {
-    color: #D2B8FF;
-}
-
-/* BOTONES */
-
-.start-btn {
-    background: #BB9AFF;
-    color: #09080D;
-}
-
-.start-btn:hover {
-    background: #D2B8FF;
-    box-shadow: 0 10px 30px #BB9AFF40;
-}
-
-/* VENTANAS EMERGENTES */
-
-.modal-box {
-    background:
-        linear-gradient(
-            145deg,
-            #241633,
-            #100D15
-        );
-    border-color: #6335A0;
-}
-
-/* NAVEGACIÓN */
-
-header {
-    background: #09080DF2;
-    border-bottom: 1px solid #382844;
-}
-
-.nav-links a:hover,
-.nav-links a.active {
-    color: #BB9AFF;
-}
-
-/* SELECCIÓN DE TEXTO */
-
-::selection {
-    background: #6335A0;
-    color: white;
-}
-
-/* SCROLLBAR */
-
-::-webkit-scrollbar {
-    width: 9px;
-}
-
-::-webkit-scrollbar-track {
-    background: #09080D;
-}
-
-::-webkit-scrollbar-thumb {
-    background: #6335A0;
-    border-radius: 10px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-    background: #BB9AFF;
+#portada > * {
+    position: relative;
+    z-index: 1;
 }
