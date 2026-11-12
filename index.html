@@ -112,23 +112,35 @@
 
 
     /* =====================================
-       INDICADOR DE SCROLL
-    ===================================== */
+   INDICADOR DE SCROLL
+===================================== */
 
-    .indicador {
-      position: absolute;
-      bottom: 28px;
-      left: 50%;
-      transform: translateX(-50%);
-      color: #ffffff;
-      font-size: 11px;
-      letter-spacing: 3px;
-      text-align: center;
-      white-space: nowrap;
-      opacity: 0.8;
-      z-index: 5;
-      animation: flotar 2s ease-in-out infinite;
-    }
+.indicador {
+  position: absolute;
+  bottom: 28px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: #ffffff;
+  font-size: 11px;
+  letter-spacing: 3px;
+  text-align: center;
+  white-space: nowrap;
+  opacity: 0.8;
+  z-index: 5;
+  animation: flotar 2s ease-in-out infinite;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+@keyframes flotar {
+  0%, 100% {
+    transform: translate(-50%, 0);
+  }
+
+  50% {
+    transform: translate(-50%, -6px);
+  }
+}
 
     @keyframes flotar {
       0%, 100% {
@@ -149,50 +161,51 @@
   font-family: "gloridot", sans-serif;
   font-style: normal;
   font-weight: 400;
-  font-size: 40px;
+  font-size: 100px;
   letter-spacing: 5px;
 }
 
 
     /* =====================================
-       ADAPTACIÓN PARA CELULARES
-    ===================================== */
+   ADAPTACIÓN PARA CELULARES
+===================================== */
 
-    @media (max-width: 600px) {
+@media (max-width: 600px) {
+
   .portada {
     padding: 90px 12px 12px;
   }
+
+  .redes {
+    top: 18px;
+    right: 18px;
+    gap: 12px;
+  }
+
+  .redes a {
+    font-size: 9px;
+  }
+
+  .redes svg {
+    width: 13px;
+    height: 13px;
+  }
+
+  .indicador {
+    font-size: 9px;
+    bottom: 20px;
+    letter-spacing: 2px;
+  }
+
+  .indice {
+    padding: 60px 8%;
+  }
+
+  .indice h2 {
+    font-size: 30px;
+  }
+
 }
-
-      .redes {
-        top: 18px;
-        right: 18px;
-        gap: 12px;
-      }
-
-      .redes a {
-        font-size: 9px;
-      }
-
-      .redes svg {
-        width: 13px;
-        height: 13px;
-      }
-
-      .indicador {
-        font-size: 9px;
-        bottom: 20px;
-        letter-spacing: 2px;
-      }
-
-      .indice {
-        padding: 60px 8%;
-      }
-
-      .indice h2 {
-        font-size: 30px;
-      }
-    }
 
   </style>
 </head>
@@ -264,9 +277,9 @@
 
     <!-- INDICADOR INFERIOR -->
 
-    <div class="indicador">
-     ↓ ✦SCROLL DOWN TO EXPLORE MY WORK✦ ↓
-    </div>
+   <a href="#indice" class="indicador">
+  ↓ ✦SCROLL DOWN TO EXPLORE MY WORK✦ ↓
+</a>
 
   </section>
 
