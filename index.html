@@ -33,16 +33,19 @@
     ===================================== */
 
     .portada {
-      width: 100%;
-      min-height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 24px;
-      position: relative;
-      overflow: hidden;
-      background-color: #080808;
-    }
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  /* ESPACIO SUPERIOR PARA SEPARAR LAS REDES DE LA IMAGEN */
+  padding: 130px 24px 24px;
+
+  position: relative;
+  overflow: hidden;
+  background-color: #080808;
+}
 
     .portada::before {
       content: "";
@@ -161,10 +164,10 @@
     ===================================== */
 
     @media (max-width: 600px) {
-
-      .portada {
-        padding: 12px;
-      }
+  .portada {
+    padding: 90px 12px 12px;
+  }
+}
 
       .redes {
         top: 18px;
