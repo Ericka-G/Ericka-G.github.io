@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -5,8 +6,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>Ericka Guillén | Portfolio</title>
-<link rel="stylesheet" href="https://use.typekit.net/xrz4urw.css">
+
+  <!-- TIPOGRAFÍA ADOBE FONTS -->
+  <link rel="stylesheet" href="https://use.typekit.net/xrz4urw.css">
+
   <style>
+
     /* =====================================
        CONFIGURACIÓN GENERAL
     ===================================== */
@@ -25,6 +30,7 @@
       background-color: #080808;
       color: #ffffff;
       font-family: Arial, Helvetica, sans-serif;
+      overflow-x: hidden;
     }
 
 
@@ -33,19 +39,16 @@
     ===================================== */
 
     .portada {
-  width: 100%;
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  /* ESPACIO SUPERIOR PARA SEPARAR LAS REDES DE LA IMAGEN */
-  padding: 130px 24px 24px;
-
-  position: relative;
-  overflow: hidden;
-  background-color: #080808;
-}
+      width: 100%;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 130px 24px 24px;
+      position: relative;
+      overflow: hidden;
+      background-color: #080808;
+    }
 
     .portada::before {
       content: "";
@@ -57,7 +60,7 @@
       background-position: center;
       background-repeat: no-repeat;
 
-      /* DESVANECIMIENTO DE LA IMAGEN */
+      /* DESVANECIMIENTO DE PORTADA */
       opacity: calc(1 - var(--fade, 0));
       transition: opacity 0.05s linear;
       pointer-events: none;
@@ -65,7 +68,7 @@
 
 
     /* =====================================
-       BOTONES DE REDES SOCIALES
+       REDES SOCIALES
     ===================================== */
 
     .redes {
@@ -112,35 +115,30 @@
 
 
     /* =====================================
-   INDICADOR DE SCROLL
-===================================== */
+       INDICADOR PARA BAJAR AL ÍNDICE
+    ===================================== */
 
-.indicador {
-  position: absolute;
-  bottom: 28px;
-  left: 50%;
-  transform: translateX(-50%);
-  color: #ffffff;
-  font-size: 11px;
-  letter-spacing: 3px;
-  text-align: center;
-  white-space: nowrap;
-  opacity: 0.8;
-  z-index: 5;
-  animation: flotar 2s ease-in-out infinite;
-  text-decoration: none;
-  cursor: pointer;
-}
+    .indicador {
+      position: absolute;
+      bottom: 28px;
+      left: 50%;
+      transform: translateX(-50%);
+      color: #ffffff;
+      font-size: 11px;
+      letter-spacing: 3px;
+      text-align: center;
+      white-space: nowrap;
+      opacity: 0.8;
+      z-index: 5;
+      animation: flotar 2s ease-in-out infinite;
+      text-decoration: none;
+      cursor: pointer;
+    }
 
-@keyframes flotar {
-  0%, 100% {
-    transform: translate(-50%, 0);
-  }
-
-  50% {
-    transform: translate(-50%, -6px);
-  }
-}
+    .indicador:hover {
+      color: #c9a0ff;
+      text-shadow: 0 0 12px rgba(201, 160, 255, 0.8);
+    }
 
     @keyframes flotar {
       0%, 100% {
@@ -154,58 +152,377 @@
 
 
     /* =====================================
-       SECCIÓN DE ÍNDICE
+       SECCIÓN DEL ÍNDICE
     ===================================== */
 
- .indice h2 {
-  font-family: "gloridot", sans-serif;
-  font-style: normal;
-  font-weight: 400;
-  font-size: 100px;
-  letter-spacing: 5px;
-}
+    .indice {
+      min-height: 100vh;
+      width: 100%;
+      padding: 80px 24px;
+      background-color: #080808;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+      position: relative;
+      overflow: hidden;
+    }
 
 
     /* =====================================
-   ADAPTACIÓN PARA CELULARES
-===================================== */
+       TÍTULO ÍNDICE - GLORIDOT
+    ===================================== */
 
-@media (max-width: 600px) {
+    .titulo-indice-wrap {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 65px;
+    }
 
-  .portada {
-    padding: 90px 12px 12px;
-  }
+    .indice h2 {
+      font-family: "gloridot", sans-serif;
+      font-style: normal;
+      font-weight: 400;
+      font-size: clamp(48px, 7vw, 76px);
+      letter-spacing: 5px;
+      color: #ffffff;
+      display: flex;
+      gap: 5px;
+    }
 
-  .redes {
-    top: 18px;
-    right: 18px;
-    gap: 12px;
-  }
+    /* ANIMACIÓN DE LETRAS ONDULANTES */
 
-  .redes a {
-    font-size: 9px;
-  }
+    .indice h2 span {
+      display: inline-block;
+      animation: onda 2.8s ease-in-out infinite;
+    }
 
-  .redes svg {
-    width: 13px;
-    height: 13px;
-  }
+    .indice h2 span:nth-child(1) {
+      animation-delay: 0s;
+    }
 
-  .indicador {
-    font-size: 9px;
-    bottom: 20px;
-    letter-spacing: 2px;
-  }
+    .indice h2 span:nth-child(2) {
+      animation-delay: 0.15s;
+    }
 
-  .indice {
-    padding: 60px 8%;
-  }
+    .indice h2 span:nth-child(3) {
+      animation-delay: 0.3s;
+    }
 
-  .indice h2 {
-    font-size: 30px;
-  }
+    .indice h2 span:nth-child(4) {
+      animation-delay: 0.45s;
+    }
 
-}
+    .indice h2 span:nth-child(5) {
+      animation-delay: 0.6s;
+    }
+
+    .indice h2 span:nth-child(6) {
+      animation-delay: 0.75s;
+    }
+
+    @keyframes onda {
+      0%, 100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-9px);
+      }
+    }
+
+
+    /* =====================================
+       PARTÍCULAS ALREDEDOR DE ÍNDICE
+    ===================================== */
+
+    .particula {
+      position: absolute;
+      color: #c9a0ff;
+      pointer-events: none;
+      animation: destello 2.5s ease-in-out infinite;
+    }
+
+    .particula:nth-child(1) {
+      top: -20px;
+      left: 5%;
+      font-size: 13px;
+      animation-delay: 0s;
+    }
+
+    .particula:nth-child(2) {
+      top: 15px;
+      right: 5%;
+      font-size: 9px;
+      animation-delay: 0.7s;
+    }
+
+    .particula:nth-child(3) {
+      bottom: -15px;
+      left: 18%;
+      font-size: 10px;
+      animation-delay: 1.2s;
+    }
+
+    .particula:nth-child(4) {
+      bottom: 0;
+      right: 17%;
+      font-size: 14px;
+      animation-delay: 1.7s;
+    }
+
+    @keyframes destello {
+      0%, 100% {
+        opacity: 0.15;
+        transform: scale(0.7);
+        text-shadow: 0 0 2px #c9a0ff;
+      }
+
+      50% {
+        opacity: 1;
+        transform: scale(1.35);
+        text-shadow:
+          0 0 8px #c9a0ff,
+          0 0 18px #c9a0ff;
+      }
+    }
+
+
+    /* =====================================
+       CATEGORÍAS DEL ÍNDICE
+    ===================================== */
+
+    .categorias {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 30px;
+      width: 100%;
+    }
+
+    .categoria {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 15px;
+
+      color: #ffffff;
+      text-decoration: none;
+
+      font-size: clamp(15px, 2.2vw, 21px);
+      letter-spacing: 3px;
+      font-weight: 400;
+
+      transition:
+        color 0.35s ease,
+        transform 0.35s ease,
+        text-shadow 0.35s ease;
+    }
+
+    /* ESTRELLAS DE LAS CATEGORÍAS */
+
+    .categoria .estrella {
+      color: #c9a0ff;
+      display: inline-block;
+      font-size: 17px;
+
+      animation: estrella 2s ease-in-out infinite;
+
+      transition:
+        transform 0.35s ease,
+        text-shadow 0.35s ease;
+    }
+
+    .categoria:nth-child(2) .estrella {
+      animation-delay: 0.6s;
+    }
+
+    .categoria:nth-child(3) .estrella {
+      animation-delay: 1.2s;
+    }
+
+    @keyframes estrella {
+      0%, 100% {
+        opacity: 0.5;
+        text-shadow: 0 0 3px #c9a0ff;
+      }
+
+      50% {
+        opacity: 1;
+        text-shadow:
+          0 0 8px #c9a0ff,
+          0 0 16px #c9a0ff;
+      }
+    }
+
+    /* EFECTO AL PASAR EL CURSOR */
+
+    .categoria:hover {
+      color: #c9a0ff;
+      transform: scale(1.06);
+
+      text-shadow:
+        0 0 8px rgba(201, 160, 255, 0.7),
+        0 0 18px rgba(201, 160, 255, 0.35);
+    }
+
+    .categoria:hover .estrella {
+      transform: rotate(25deg) scale(1.4);
+
+      text-shadow:
+        0 0 10px #c9a0ff,
+        0 0 22px #c9a0ff;
+    }
+
+    .categoria:focus-visible,
+    .indicador:focus-visible {
+      outline: 1px solid #c9a0ff;
+      outline-offset: 8px;
+    }
+
+
+    /* =====================================
+       HALO DEL CURSOR
+    ===================================== */
+
+    #halo-cursor {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+
+      background: rgba(201, 160, 255, 0.15);
+      box-shadow:
+        0 0 10px rgba(201, 160, 255, 0.55),
+        0 0 24px rgba(201, 160, 255, 0.25);
+
+      pointer-events: none;
+      z-index: 9998;
+
+      transform: translate(-50%, -50%);
+      opacity: 0;
+    }
+
+    /* PARTÍCULAS QUE DEJA EL CURSOR */
+
+    .estela-particula {
+      position: fixed;
+      top: 0;
+      left: 0;
+
+      color: #c9a0ff;
+      font-size: 12px;
+
+      pointer-events: none;
+      z-index: 9999;
+
+      text-shadow:
+        0 0 5px #c9a0ff,
+        0 0 12px #c9a0ff;
+
+      transform: translate(-50%, -50%);
+      animation: desaparecer 750ms ease-out forwards;
+    }
+
+    @keyframes desaparecer {
+      0% {
+        opacity: 0.95;
+        transform: translate(-50%, -50%) scale(1);
+      }
+
+      100% {
+        opacity: 0;
+        transform: translate(-50%, -100%) scale(0.2);
+      }
+    }
+
+
+    /* =====================================
+       ADAPTACIÓN PARA CELULARES
+    ===================================== */
+
+    @media (max-width: 600px) {
+
+      .portada {
+        padding: 90px 12px 12px;
+      }
+
+      .redes {
+        top: 18px;
+        right: 18px;
+        gap: 12px;
+      }
+
+      .redes a {
+        font-size: 9px;
+      }
+
+      .redes svg {
+        width: 13px;
+        height: 13px;
+      }
+
+      .indicador {
+        font-size: 9px;
+        bottom: 20px;
+        letter-spacing: 2px;
+      }
+
+      .indice {
+        padding: 60px 20px;
+      }
+
+      .titulo-indice-wrap {
+        margin-bottom: 55px;
+      }
+
+      .indice h2 {
+        font-size: 48px;
+        gap: 2px;
+      }
+
+      .categorias {
+        gap: 28px;
+      }
+
+      .categoria {
+        font-size: 13px;
+        letter-spacing: 1.5px;
+        gap: 9px;
+      }
+
+      .categoria .estrella {
+        font-size: 13px;
+      }
+
+      /* No mostramos el efecto de cursor en celulares */
+      #halo-cursor,
+      .estela-particula {
+        display: none;
+      }
+    }
+
+
+    /* RESPETAR PREFERENCIAS DE MOVIMIENTO */
+
+    @media (prefers-reduced-motion: reduce) {
+      .indice h2 span,
+      .particula,
+      .categoria .estrella,
+      .indicador {
+        animation: none;
+      }
+
+      html {
+        scroll-behavior: auto;
+      }
+    }
 
   </style>
 </head>
@@ -213,9 +530,10 @@
 
 <body>
 
+
   <!-- =====================================
        PORTADA
-  ====================================== -->
+  ===================================== -->
 
   <section class="portada">
 
@@ -275,11 +593,11 @@
     </div>
 
 
-    <!-- INDICADOR INFERIOR -->
+    <!-- INDICADOR PARA BAJAR -->
 
-   <a href="#indice" class="indicador">
-  ↓ ✦SCROLL DOWN TO EXPLORE MY WORK✦ ↓
-</a>
+    <a href="#indice" class="indicador">
+      ↓ ✦SCROLL DOWN TO EXPLORE MY WORK✦ ↓
+    </a>
 
   </section>
 
@@ -287,30 +605,79 @@
 
   <!-- =====================================
        ÍNDICE DEL PORTAFOLIO
-       AQUÍ AGREGAREMOS EL CONTENIDO
-       DE LAS SIGUIENTES SECCIONES
-  ====================================== -->
+  ===================================== -->
 
   <section class="indice" id="indice">
 
-    <h2>ÍNDICE</h2>
 
-    <!-- AQUÍ AGREGAREMOS TUS PROYECTOS -->
+    <!-- TÍTULO ANIMADO -->
+
+    <div class="titulo-indice-wrap">
+
+      <h2 aria-label="Índice">
+        <span aria-hidden="true">Í</span>
+        <span aria-hidden="true">N</span>
+        <span aria-hidden="true">D</span>
+        <span aria-hidden="true">I</span>
+        <span aria-hidden="true">C</span>
+        <span aria-hidden="true">E</span>
+      </h2>
+
+      <!-- PARTÍCULAS DECORATIVAS -->
+
+      <span class="particula">✦</span>
+      <span class="particula">·</span>
+      <span class="particula">✧</span>
+      <span class="particula">·</span>
+
+    </div>
+
+
+    <!-- CATEGORÍAS -->
+
+    <nav class="categorias" aria-label="Categorías del portafolio">
+
+      <a href="#diseno3d" class="categoria">
+        <span class="estrella">✦</span>
+        DISEÑO 3D
+        <span class="estrella">✦</span>
+      </a>
+
+      <a href="#personajes" class="categoria">
+        <span class="estrella">✦</span>
+        DISEÑO DE PERSONAJES
+        <span class="estrella">✦</span>
+      </a>
+
+      <a href="#motion" class="categoria">
+        <span class="estrella">✦</span>
+        MOTION GRAPHICS
+        <span class="estrella">✦</span>
+      </a>
+
+    </nav>
 
   </section>
 
 
 
   <!-- =====================================
-       SCRIPT PARA DESVANECER LA PORTADA
-  ====================================== -->
+       HALO DEL CURSOR
+  ===================================== -->
+
+  <div id="halo-cursor"></div>
+
+
+
+  <!-- =====================================
+       SCRIPT: DESVANECIMIENTO DE PORTADA
+  ===================================== -->
 
   <script>
 
     window.addEventListener("scroll", function() {
 
       const desplazamiento = window.scrollY;
-
       const alturaPantalla = window.innerHeight;
 
       const progreso = Math.min(
@@ -324,6 +691,77 @@
     });
 
   </script>
+
+
+
+  <!-- =====================================
+       SCRIPT: HALO Y ESTELA DEL CURSOR
+  ===================================== -->
+
+  <script>
+
+    const halo = document.getElementById("halo-cursor");
+
+    const puedeUsarMouse = window.matchMedia(
+      "(hover: hover) and (pointer: fine)"
+    ).matches;
+
+    if (puedeUsarMouse) {
+
+      let ultimaX = 0;
+      let ultimaY = 0;
+      let primerMovimiento = true;
+
+      window.addEventListener("pointermove", function(event) {
+
+        const x = event.clientX;
+        const y = event.clientY;
+
+        /* MOVIMIENTO DEL HALO */
+
+        halo.style.left = x + "px";
+        halo.style.top = y + "px";
+        halo.style.opacity = "1";
+
+        /* CREAR PARTÍCULAS CADA CIERTA DISTANCIA */
+
+        const distancia = Math.hypot(
+          x - ultimaX,
+          y - ultimaY
+        );
+
+        if (primerMovimiento || distancia > 16) {
+
+          const particula = document.createElement("span");
+
+          particula.className = "estela-particula";
+          particula.textContent = "✦";
+
+          particula.style.left = x + "px";
+          particula.style.top = y + "px";
+
+          document.body.appendChild(particula);
+
+          particula.addEventListener("animationend", function() {
+            particula.remove();
+          });
+
+          ultimaX = x;
+          ultimaY = y;
+          primerMovimiento = false;
+
+        }
+
+      });
+
+      window.addEventListener("pointerleave", function() {
+        halo.style.opacity = "0";
+      });
+
+    }
+
+  </script>
+
 
 </body>
 </html>
