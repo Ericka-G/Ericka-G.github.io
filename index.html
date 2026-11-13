@@ -279,59 +279,65 @@
 
 
     /* =====================================
-       SECCIÓN DEL ÍNDICE
-    ===================================== */
+   SECCIÓN DEL ÍNDICE
+===================================== */
 
-    .indice {
-      min-height: 100vh;
-      width: 100%;
-      padding: 100px 24px;
-      background-color: #080808;
+.indice {
+  min-height: 100vh;
+  width: 100%;
+  padding: 100px 24px;
+  background-color: #080808;
 
-      display: none;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 
-      position: relative;
-      overflow: hidden;
-      isolation: isolate;
-      scroll-margin-top: 0;
-    }
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  scroll-margin-top: 0;
+}
 
-    /* IMAGEN ANIMADA DE FONDO */
+/* MOSTRAR EL ÍNDICE AL SELECCIONARLO */
 
-    .indice::before {
-      content: "";
-      position: absolute;
-      inset: -12%;
+.indice.visible {
+  display: flex;
+}
 
-      background-image: url("fondo-git.png");
-      background-size: 90% 90%;
-      background-position: center;
-      background-repeat: no-repeat;
+/* IMAGEN ANIMADA DE FONDO */
 
-      z-index: -1;
-      pointer-events: none;
+.indice::before {
+  content: "";
+  position: absolute;
+  inset: -12%;
 
-      animation: movimiento-aurora 35s ease-in-out infinite alternate;
-    }
+  background-image: url("fondo-git.png");
+  background-size: 90% 90%;
+  background-position: center;
+  background-repeat: no-repeat;
 
-    /* MOVIMIENTO Y DISTORSIÓN LENTA */
+  z-index: -1;
+  pointer-events: none;
 
-    @keyframes movimiento-aurora {
-      0% {
-        transform: translate(-3%, -1%) scale(1.05) skewX(-1deg);
-      }
+  animation: movimiento-aurora 35s ease-in-out infinite alternate;
+}
 
-      50% {
-        transform: translate(1%, 2%) scale(1.10) skewX(1deg);
-      }
+/* MOVIMIENTO Y DISTORSIÓN LENTA */
 
-      100% {
-        transform: translate(3%, -1%) scale(1.06) skewX(-1deg);
-      }
-    }
+@keyframes movimiento-aurora {
+  0% {
+    transform: translate(-3%, -1%) scale(1.05) skewX(-1deg);
+  }
+
+  50% {
+    transform: translate(1%, 2%) scale(1.10) skewX(1deg);
+  }
+
+  100% {
+    transform: translate(3%, -1%) scale(1.06) skewX(-1deg);
+  }
+}
 
 
     /* =====================================
