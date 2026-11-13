@@ -155,19 +155,50 @@
     ===================================== */
 
     .indice {
-      min-height: 100vh;
-      width: 100%;
-      padding: 100px 24px;
-      background-color: #080808;
+  min-height: 100vh;
+  width: 100%;
+  padding: 100px 24px;
+  background-color: #080808;
 
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 
-      position: relative;
-      overflow: hidden;
-    }
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+/* IMAGEN ANIMADA DE FONDO */
+
+.indice::before {
+  content: "";
+  position: absolute;
+  inset: -5%;
+
+  background-image: url("fondo-git.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  z-index: -1;
+  pointer-events: none;
+
+  animation: movimiento-aurora 45s ease-in-out infinite alternate;
+}
+
+/* MOVIMIENTO HORIZONTAL LENTO */
+
+@keyframes movimiento-aurora {
+  0% {
+    transform: translateX(-3%);
+  }
+
+  100% {
+    transform: translateX(3%);
+  }
+}
 
 
     /* =====================================
