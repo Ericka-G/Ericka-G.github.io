@@ -892,16 +892,41 @@
 
   <script>
 
+  const portada = document.querySelector(".portada");
+  const indice = document.querySelector(".indice");
+
   const menuIndice = document.getElementById("menuIndice");
   const botonIndice = document.getElementById("botonIndice");
 
-  /* ABRIR EL MENÚ Y NAVEGAR AL ÍNDICE */
+  /* MOSTRAR EL ÍNDICE */
 
-  botonIndice.addEventListener("click", function() {
+  botonIndice.addEventListener("click", function(event) {
+
+    event.preventDefault();
+
+    portada.style.display = "none";
+    indice.classList.add("visible");
 
     menuIndice.classList.add("abierto");
-
     botonIndice.setAttribute("aria-expanded", "true");
+
+    window.scrollTo(0, 0);
+
+  });
+
+  /* VOLVER A HOME */
+
+  document.querySelector(".menu-home").addEventListener("click", function(event) {
+
+    event.preventDefault();
+
+    indice.classList.remove("visible");
+    portada.style.display = "flex";
+
+    menuIndice.classList.remove("abierto");
+    botonIndice.setAttribute("aria-expanded", "false");
+
+    window.scrollTo(0, 0);
 
   });
 
@@ -912,7 +937,6 @@
     if (!menuIndice.contains(event.target)) {
 
       menuIndice.classList.remove("abierto");
-
       botonIndice.setAttribute("aria-expanded", "false");
 
     }
@@ -926,7 +950,6 @@
     enlace.addEventListener("click", function() {
 
       menuIndice.classList.remove("abierto");
-
       botonIndice.setAttribute("aria-expanded", "false");
 
     });
