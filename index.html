@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -52,17 +53,134 @@
     .portada::before {
       content: "";
       display: block;
-      width: 100%;
+      width: 96%;
+      max-width: 1800px;
       aspect-ratio: 2376 / 1480;
       background-image: url("PORTADA-2026.png");
       background-size: contain;
       background-position: center;
       background-repeat: no-repeat;
-
-      /* DESVANECIMIENTO DE PORTADA */
-      opacity: calc(1 - var(--fade, 0));
-      transition: opacity 0.05s linear;
       pointer-events: none;
+    }
+
+
+    /* =====================================
+       MENÚ PRINCIPAL SUPERIOR IZQUIERDO
+    ===================================== */
+
+    .menu-principal {
+      position: absolute;
+      top: 30px;
+      left: 35px;
+      display: flex;
+      align-items: center;
+      gap: 22px;
+      z-index: 20;
+    }
+
+    .menu-principal a,
+    .boton-menu {
+      color: #c9a0ff;
+      text-decoration: none;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 11px;
+      letter-spacing: 1px;
+      font-weight: 400;
+
+      transition:
+        color 0.3s ease,
+        transform 0.3s ease,
+        text-shadow 0.3s ease;
+    }
+
+    .menu-principal a:hover,
+    .boton-menu:hover {
+      color: #ffffff;
+      transform: translateY(-3px);
+      text-shadow: 0 0 10px rgba(201, 160, 255, 0.9);
+    }
+
+    .menu-home {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    /* BOTÓN ÍNDICE */
+
+    .menu-indice {
+      position: relative;
+    }
+
+    .boton-menu {
+      background: none;
+      border: none;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+    }
+
+    .flecha-menu {
+      font-size: 9px;
+      transition: transform 0.3s ease;
+    }
+
+    .menu-indice:hover .flecha-menu,
+    .menu-indice:focus-within .flecha-menu,
+    .menu-indice.abierto .flecha-menu {
+      transform: rotate(180deg);
+    }
+
+    /* MENÚ DESPLEGABLE */
+
+    .submenu {
+      position: absolute;
+      top: 28px;
+      left: -12px;
+      min-width: 205px;
+      padding: 12px 0;
+
+      background: rgba(12, 8, 18, 0.95);
+      border: 1px solid rgba(201, 160, 255, 0.3);
+      border-radius: 8px;
+
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(8px);
+
+      transition:
+        opacity 0.3s ease,
+        transform 0.3s ease,
+        visibility 0.3s ease;
+
+      backdrop-filter: blur(10px);
+    }
+
+    .menu-indice:hover .submenu,
+    .menu-indice:focus-within .submenu,
+    .menu-indice.abierto .submenu {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    .submenu a {
+      display: block;
+      padding: 11px 15px;
+      font-size: 10px;
+      letter-spacing: 1.5px;
+      white-space: nowrap;
+    }
+
+    .submenu a:hover {
+      background: rgba(201, 160, 255, 0.13);
+      transform: none;
+      text-shadow: 0 0 9px rgba(201, 160, 255, 0.9);
     }
 
 
@@ -114,39 +232,50 @@
 
 
     /* =====================================
-       INDICADOR PARA BAJAR AL ÍNDICE
+       BOTÓN PARA IR AL ÍNDICE
     ===================================== */
 
     .indicador {
       position: absolute;
-      bottom: 60px;
+      bottom: 55px;
       left: 50%;
       transform: translateX(-50%);
+
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+
+      padding: 12px 22px;
+
       color: #ffffff;
-      font-size: 11px;
-      letter-spacing: 3px;
+      background: rgba(15, 10, 22, 0.45);
+      border: 1px solid rgba(201, 160, 255, 0.65);
+      border-radius: 30px;
+
+      font-size: 10px;
+      letter-spacing: 2px;
       text-align: center;
       white-space: nowrap;
-      opacity: 0.8;
-      z-index: 5;
-      animation: flotar 2s ease-in-out infinite;
       text-decoration: none;
-      cursor: pointer;
+
+      z-index: 5;
+
+      transition:
+        color 0.3s ease,
+        background 0.3s ease,
+        box-shadow 0.3s ease,
+        transform 0.3s ease;
     }
 
     .indicador:hover {
-      color: #c9a0ff;
-      text-shadow: 0 0 12px rgba(201, 160, 255, 0.8);
-    }
+      color: #ffffff;
+      background: rgba(95, 45, 130, 0.45);
+      box-shadow:
+        0 0 10px rgba(201, 160, 255, 0.45),
+        0 0 25px rgba(201, 160, 255, 0.2);
 
-    @keyframes flotar {
-      0%, 100% {
-        transform: translate(-50%, 0);
-      }
-
-      50% {
-        transform: translate(-50%, -6px);
-      }
+      transform: translate(-50%, -4px);
     }
 
 
@@ -155,82 +284,81 @@
     ===================================== */
 
     .indice {
-  min-height: 100vh;
-  width: 100%;
-  padding: 100px 24px;
-  background-color: #080808;
+      min-height: 100vh;
+      width: 100%;
+      padding: 100px 24px;
+      background-color: #080808;
 
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
 
-  position: relative;
-  overflow: hidden;
-  isolation: isolate;
-}
+      position: relative;
+      overflow: hidden;
+      isolation: isolate;
+      scroll-margin-top: 0;
+    }
 
-/* IMAGEN ANIMADA DE FONDO */
+    /* IMAGEN ANIMADA DE FONDO */
 
-.indice::before {
-  content: "";
-  position: absolute;
+    .indice::before {
+      content: "";
+      position: absolute;
+      inset: -12%;
 
-  /* La imagen sobresale de la sección para evitar cortes */
-  inset: -12%;
+      background-image: url("fondo-git.png");
+      background-size: 90% 90%;
+      background-position: center;
+      background-repeat: no-repeat;
 
-  background-image: url("fondo-git.png");
-  background-size: 90% 90%;
-  background-position: center;
-  background-repeat: no-repeat;
+      z-index: -1;
+      pointer-events: none;
 
-  z-index: -1;
-  pointer-events: none;
+      animation: movimiento-aurora 35s ease-in-out infinite alternate;
+    }
 
-  animation: movimiento-aurora 35s ease-in-out infinite alternate;
-}
+    /* MOVIMIENTO Y DISTORSIÓN LENTA */
 
-/* MOVIMIENTO Y DISTORSIÓN LENTA */
+    @keyframes movimiento-aurora {
+      0% {
+        transform: translate(-3%, -1%) scale(1.05) skewX(-1deg);
+      }
 
-@keyframes movimiento-aurora {
-  0% {
-    transform: translate(-3%, -1%) scale(1.05) skewX(-1deg);
-  }
+      50% {
+        transform: translate(1%, 2%) scale(1.10) skewX(1deg);
+      }
 
-  50% {
-    transform: translate(1%, 2%) scale(1.10) skewX(1deg);
-  }
-
-  100% {
-    transform: translate(3%, -1%) scale(1.06) skewX(-1deg);
-  }
-}
+      100% {
+        transform: translate(3%, -1%) scale(1.06) skewX(-1deg);
+      }
+    }
 
 
     /* =====================================
        TÍTULO ÍNDICE - GLORIDOT
     ===================================== */
 
-   .titulo-indice-wrap {
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 65px;
+    .titulo-indice-wrap {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 65px;
 
-  transform: translateY(-35px);
-}
+      transform: translateY(-35px);
+    }
 
     .indice h2 {
-  font-family: "gloridot", sans-serif;
-  font-style: normal;
-  font-weight: 400;
-  font-size: 100px;
-  letter-spacing: 5px;
-  color: #ffffff;
-  display: flex;
-  gap: 5px;
-}
+      font-family: "gloridot", sans-serif;
+      font-style: normal;
+      font-weight: 400;
+      font-size: 100px;
+      letter-spacing: 5px;
+      color: #ffffff;
+      display: flex;
+      gap: 5px;
+    }
 
     /* ANIMACIÓN DE LETRAS ONDULANTES */
 
@@ -355,10 +483,23 @@
       letter-spacing: 3px;
       font-weight: 400;
 
+      padding: 8px 14px;
+      border-radius: 8px;
+
       transition:
         color 0.35s ease,
+        background-color 0.35s ease,
         transform 0.35s ease,
         text-shadow 0.35s ease;
+    }
+
+    .categoria:hover,
+    .categoria:focus-visible,
+    .categoria:active {
+      color: #E8C5FF;
+      background-color: rgba(25, 8, 38, 0.75);
+      text-shadow: 0 0 12px rgba(218, 160, 255, 0.8);
+      transform: scale(1.04);
     }
 
     /* ESTRELLAS DE LAS CATEGORÍAS */
@@ -396,25 +537,6 @@
           0 0 16px #c9a0ff;
       }
     }
-
-    /* EFECTO AL PASAR EL CURSOR O SELECCIONAR UNA OPCIÓN */
-
-.indice a {
-  transition: color 0.3s ease,
-              background-color 0.3s ease,
-              text-shadow 0.3s ease;
-}
-
-.indice a:hover,
-.indice a:focus-visible,
-.indice a:active {
-  color: #E8C5FF;
-  background-color: rgba(25, 8, 38, 0.75);
-  text-shadow: 0 0 12px rgba(218, 160, 255, 0.8);
-
-  border-radius: 8px;
-  padding: 8px 14px;
-}
 
 
     /* =====================================
@@ -482,11 +604,30 @@
     @media (max-width: 600px) {
 
       .portada {
-        padding: 90px 12px 12px;
+        padding: 110px 12px 12px;
+      }
+
+      .portada::before {
+        width: 100%;
+      }
+
+      .menu-principal {
+        top: 18px;
+        left: 18px;
+        gap: 14px;
+      }
+
+      .menu-principal a,
+      .boton-menu {
+        font-size: 9px;
+      }
+
+      .submenu {
+        min-width: 190px;
       }
 
       .redes {
-        top: 18px;
+        top: 52px;
         right: 18px;
         gap: 12px;
       }
@@ -503,7 +644,8 @@
       .indicador {
         font-size: 9px;
         bottom: 20px;
-        letter-spacing: 2px;
+        letter-spacing: 1.5px;
+        padding: 10px 16px;
       }
 
       .indice {
@@ -534,6 +676,7 @@
       }
 
       /* No mostramos el efecto de cursor en celulares */
+
       #halo-cursor,
       .estela-particula {
         display: none;
@@ -541,13 +684,16 @@
     }
 
 
-    /* RESPETAR PREFERENCIAS DE MOVIMIENTO */
+    /* =====================================
+       RESPETAR PREFERENCIAS DE MOVIMIENTO
+    ===================================== */
 
     @media (prefers-reduced-motion: reduce) {
+
       .indice h2 span,
       .particula,
       .categoria .estrella,
-      .indicador {
+      .indice::before {
         animation: none;
       }
 
@@ -567,7 +713,45 @@
        PORTADA
   ===================================== -->
 
-  <section class="portada">
+  <section class="portada" id="home">
+
+
+    <!-- MENÚ PRINCIPAL -->
+
+    <nav class="menu-principal" aria-label="Menú principal">
+
+      <a href="#home" class="menu-home">
+        ✦ HOME
+      </a>
+
+      <div class="menu-indice" id="menuIndice">
+
+        <button
+          class="boton-menu"
+          id="botonIndice"
+          type="button"
+          aria-expanded="false"
+          aria-controls="submenuIndice">
+
+          ✦ ÍNDICE
+          <span class="flecha-menu">▼</span>
+
+        </button>
+
+        <div class="submenu" id="submenuIndice">
+
+  <a href="#diseno3d">DISEÑO 3D</a>
+
+  <a href="#personajes">DISEÑO DE PERSONAJES</a>
+
+  <a href="#motion">MOTION GRAPHICS</a>
+
+</div>
+
+      </div>
+
+    </nav>
+
 
     <!-- REDES SOCIALES -->
 
@@ -625,10 +809,10 @@
     </div>
 
 
-    <!-- INDICADOR PARA BAJAR -->
+    <!-- BOTÓN PARA BAJAR AL ÍNDICE -->
 
     <a href="#indice" class="indicador">
-      ↓ ✦SCROLL DOWN TO EXPLORE MY WORK✦ ↓
+      ↓ ✦ EXPLORE MY WORK ✦ ↓
     </a>
 
   </section>
@@ -702,23 +886,47 @@
 
 
   <!-- =====================================
-       SCRIPT: DESVANECIMIENTO DE PORTADA
+       SCRIPT: MENÚ DESPLEGABLE
   ===================================== -->
 
   <script>
 
-    window.addEventListener("scroll", function() {
+    const menuIndice = document.getElementById("menuIndice");
+    const botonIndice = document.getElementById("botonIndice");
 
-      const desplazamiento = window.scrollY;
-      const alturaPantalla = window.innerHeight;
+    botonIndice.addEventListener("click", function(event) {
 
-      const progreso = Math.min(
-        desplazamiento / (alturaPantalla * 0.75),
-        1
-      );
+      event.stopPropagation();
 
-      document.querySelector(".portada")
-        .style.setProperty("--fade", progreso);
+      const estaAbierto = menuIndice.classList.toggle("abierto");
+
+      botonIndice.setAttribute("aria-expanded", estaAbierto);
+
+    });
+
+    /* CERRAR EL MENÚ AL HACER CLIC FUERA */
+
+    document.addEventListener("click", function(event) {
+
+      if (!menuIndice.contains(event.target)) {
+
+        menuIndice.classList.remove("abierto");
+        botonIndice.setAttribute("aria-expanded", "false");
+
+      }
+
+    });
+
+    /* CERRAR EL MENÚ AL ELEGIR UNA OPCIÓN */
+
+    document.querySelectorAll(".submenu a").forEach(function(enlace) {
+
+      enlace.addEventListener("click", function() {
+
+        menuIndice.classList.remove("abierto");
+        botonIndice.setAttribute("aria-expanded", "false");
+
+      });
 
     });
 
