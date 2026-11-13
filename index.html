@@ -175,28 +175,34 @@
 .indice::before {
   content: "";
   position: absolute;
-  inset: -5%;
+
+  /* La imagen sobresale de la sección para evitar cortes */
+  inset: -12%;
 
   background-image: url("fondo-git.png");
-  background-size: cover;
+  background-size: 90% 90%;
   background-position: center;
   background-repeat: no-repeat;
 
   z-index: -1;
   pointer-events: none;
 
-  animation: movimiento-aurora 45s ease-in-out infinite alternate;
+  animation: movimiento-aurora 35s ease-in-out infinite alternate;
 }
 
-/* MOVIMIENTO HORIZONTAL LENTO */
+/* MOVIMIENTO Y DISTORSIÓN LENTA */
 
 @keyframes movimiento-aurora {
   0% {
-    transform: translateX(-3%);
+    transform: translate(-3%, -1%) scale(1.05) skewX(-1deg);
+  }
+
+  50% {
+    transform: translate(1%, 2%) scale(1.10) skewX(1deg);
   }
 
   100% {
-    transform: translateX(3%);
+    transform: translate(3%, -1%) scale(1.06) skewX(-1deg);
   }
 }
 
@@ -391,30 +397,24 @@
       }
     }
 
-    /* EFECTO AL PASAR EL CURSOR */
+    /* EFECTO AL PASAR EL CURSOR O SELECCIONAR UNA OPCIÓN */
 
-    .categoria:hover {
-      color: #c9a0ff;
-      transform: scale(1.06);
+.indice a {
+  transition: color 0.3s ease,
+              background-color 0.3s ease,
+              text-shadow 0.3s ease;
+}
 
-      text-shadow:
-        0 0 8px rgba(201, 160, 255, 0.7),
-        0 0 18px rgba(201, 160, 255, 0.35);
-    }
+.indice a:hover,
+.indice a:focus-visible,
+.indice a:active {
+  color: #E8C5FF;
+  background-color: rgba(25, 8, 38, 0.75);
+  text-shadow: 0 0 12px rgba(218, 160, 255, 0.8);
 
-    .categoria:hover .estrella {
-      transform: rotate(25deg) scale(1.4);
-
-      text-shadow:
-        0 0 10px #c9a0ff,
-        0 0 22px #c9a0ff;
-    }
-
-    .categoria:focus-visible,
-    .indicador:focus-visible {
-      outline: 1px solid #c9a0ff;
-      outline-offset: 8px;
-    }
+  border-radius: 8px;
+  padding: 8px 14px;
+}
 
 
     /* =====================================
