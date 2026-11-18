@@ -602,6 +602,165 @@
     }
 
 
+   
+/* =====================================
+   SECCIÓN DISEÑO 3D
+===================================== */
+
+.diseno3d {
+  display: none;
+  min-height: 100vh;
+  width: 100%;
+  padding: 130px 8% 100px;
+  background-color: #080808;
+  position: relative;
+  overflow: hidden;
+}
+
+.diseno3d.visible {
+  display: block;
+}
+
+/* TÍTULO */
+
+.encabezado-3d {
+  text-align: center;
+  margin-bottom: 65px;
+}
+
+.encabezado-3d h2 {
+  font-family: "gloridot", sans-serif;
+  font-weight: 400;
+  font-size: clamp(55px, 9vw, 110px);
+  color: #ffffff;
+  letter-spacing: 4px;
+  text-shadow: 0 0 18px rgba(201,160,255,0.25);
+}
+
+.encabezado-3d p {
+  margin-top: 15px;
+  color: #c9a0ff;
+  font-size: 10px;
+  letter-spacing: 4px;
+}
+
+/* MOSAICOS */
+
+.galeria-3d {
+  max-width: 1250px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 35px;
+}
+
+.mosaico {
+  position: relative;
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: 1px solid rgba(201,160,255,0.2);
+  background: #100c15;
+  border-radius: 5px;
+  overflow: hidden;
+  cursor: pointer;
+  text-align: left;
+  color: white;
+  transition: transform 0.4s ease, border-color 0.4s ease,
+              box-shadow 0.4s ease;
+}
+
+.mosaico:hover {
+  transform: translateY(-7px);
+  border-color: rgba(201,160,255,0.85);
+  box-shadow: 0 0 25px rgba(201,160,255,0.2);
+}
+
+.mosaico img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  transition: transform 0.7s ease, filter 0.5s ease;
+}
+
+.mosaico:hover img {
+  transform: scale(1.06);
+  filter: brightness(1.15);
+}
+
+.mosaico-info {
+  padding: 20px 22px;
+  background: rgba(12,8,18,0.96);
+}
+
+.mosaico-info h3 {
+  font-size: 17px;
+  font-weight: 400;
+  letter-spacing: 2px;
+}
+
+.mosaico-info p {
+  margin-top: 8px;
+  color: #c9a0ff;
+  font-size: 9px;
+  letter-spacing: 2px;
+}
+
+/* ÚLTIMO MOSAICO */
+
+.mosaico:last-child {
+  grid-column: 1 / -1;
+}
+
+/* BOTÓN VOLVER */
+
+.volver-indice {
+  display: block;
+  margin: 65px auto 0;
+  padding: 12px 24px;
+  background: transparent;
+  border: 1px solid rgba(201,160,255,0.6);
+  border-radius: 25px;
+  color: #c9a0ff;
+  font-size: 10px;
+  letter-spacing: 2px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.volver-indice:hover {
+  color: white;
+  background: rgba(95,45,130,0.35);
+  box-shadow: 0 0 18px rgba(201,160,255,0.35);
+}
+
+/* ADAPTACIÓN MÓVIL */
+
+@media (max-width: 700px) {
+  .diseno3d {
+    padding: 110px 18px 70px;
+  }
+
+  .encabezado-3d {
+    margin-bottom: 40px;
+  }
+
+  .galeria-3d {
+    grid-template-columns: 1fr;
+    gap: 25px;
+  }
+
+  .mosaico:last-child {
+    grid-column: auto;
+  }
+
+  .mosaico-info h3 {
+    font-size: 14px;
+  }
+}
+
+    
     /* =====================================
        ADAPTACIÓN PARA CELULARES
     ===================================== */
@@ -866,6 +1025,99 @@
 
   </section>
 
+  
+<!-- =====================================
+     SECCIÓN DISEÑO 3D
+===================================== -->
+
+<section class="diseno3d" id="diseno3d">
+
+  <header class="encabezado-3d">
+    <h2>Diseño 3D</h2>
+    <p>SELECTED WORKS · 3D ENVIRONMENTS</p>
+  </header>
+
+  <div class="galeria-3d">
+
+    <!-- PROYECTO 01: MONTAÑAS Y NAVE -->
+    <button class="mosaico" data-proyecto="montanas">
+      <img src="Dise%C3%B1o%203D/Monta%C3%B1as.jpeg"
+           alt="Proyecto Montañas y Nave">
+      <div class="mosaico-info">
+        <h3>01 — MONTAÑAS / NAVE</h3>
+        <p>3D ENVIRONMENT</p>
+      </div>
+    </button>
+
+    <!-- PROYECTO 02: LOST -->
+    <button class="mosaico" data-proyecto="lost">
+      <img src="Dise%C3%B1o%203D/LOST-FIN-1.png"
+           alt="Proyecto LOST">
+      <div class="mosaico-info">
+        <h3>02 — LOST</h3>
+        <p>3D ENVIRONMENT</p>
+      </div>
+    </button>
+
+    <!-- PROYECTO 03: ATEEZ -->
+    <button class="mosaico" data-proyecto="ateez">
+      <img src="Dise%C3%B1o%203D/Ateez1.png"
+           alt="Proyecto ATEEZ">
+      <div class="mosaico-info">
+        <h3>03 — ATEEZ</h3>
+        <p>SET RECREATION</p>
+      </div>
+    </button>
+
+    <!-- PROYECTO 04: MANIAC -->
+    <button class="mosaico" data-proyecto="maniac">
+      <img src="Dise%C3%B1o%203D/Maniac.png"
+           alt="Proyecto MANIAC">
+      <div class="mosaico-info">
+        <h3>04 — MANIAC</h3>
+        <p>SET RECREATION</p>
+      </div>
+    </button>
+
+    <!-- PROYECTO 05: VELOCIDADE -->
+    <button class="mosaico" data-proyecto="velocidade">
+      <img src="Dise%C3%B1o%203D/Velocidade1.png"
+           alt="Proyecto Velocidade">
+      <div class="mosaico-info">
+        <h3>05 — VELOCIDADE</h3>
+        <p>3D ENVIRONMENT</p>
+      </div>
+    </button>
+
+    <!-- PROYECTO 06: LIKE CRAZY -->
+    <button class="mosaico" data-proyecto="likecrazy">
+      <img src="Dise%C3%B1o%203D/LikeCrazy-1.png"
+           alt="Proyecto Like Crazy">
+      <div class="mosaico-info">
+        <h3>06 — LIKE CRAZY</h3>
+        <p>SET RECREATION</p>
+      </div>
+    </button>
+
+    <!-- PROYECTO 07: HOLDER -->
+    <button class="mosaico" data-proyecto="holder">
+      <img src="Dise%C3%B1o%203D/Holder-JM.png"
+           alt="Proyecto Holder">
+      <div class="mosaico-info">
+        <h3>07 — HOLDER</h3>
+        <p>3D ENVIRONMENT</p>
+      </div>
+    </button>
+
+  </div>
+
+  <button class="volver-indice" id="volverIndice">
+    ✦ VOLVER AL ÍNDICE ✦
+  </button>
+
+</section>
+
+
 
 
   <!-- =====================================
@@ -882,69 +1134,79 @@
 
   <script>
 
-  const portada = document.querySelector(".portada");
-  const indice = document.querySelector(".indice");
+  
+const portada = document.querySelector(".portada");
+const indice = document.querySelector(".indice");
+const diseno3d = document.querySelector(".diseno3d");
 
-  const menuIndice = document.getElementById("menuIndice");
-  const botonIndice = document.getElementById("botonIndice");
+const menuIndice = document.getElementById("menuIndice");
+const botonIndice = document.getElementById("botonIndice");
 
-  /* MOSTRAR EL ÍNDICE */
+function cerrarMenu() {
+  menuIndice.classList.remove("abierto");
+  botonIndice.setAttribute("aria-expanded", "false");
+}
 
-  botonIndice.addEventListener("click", function(event) {
+function mostrarPortada() {
+  portada.style.display = "flex";
+  indice.classList.remove("visible");
+  diseno3d.classList.remove("visible");
+  cerrarMenu();
+  window.scrollTo(0, 0);
+}
 
+function mostrarIndice() {
+  portada.style.display = "none";
+  indice.classList.add("visible");
+  diseno3d.classList.remove("visible");
+  cerrarMenu();
+  window.scrollTo(0, 0);
+}
+
+function mostrarDiseno3D() {
+  portada.style.display = "none";
+  indice.classList.remove("visible");
+  diseno3d.classList.add("visible");
+  cerrarMenu();
+  window.scrollTo(0, 0);
+}
+
+/* ABRIR ÍNDICE */
+
+botonIndice.addEventListener("click", function(event) {
+  event.preventDefault();
+  mostrarIndice();
+});
+
+/* VOLVER A HOME */
+
+document.querySelector(".menu-home").addEventListener("click", function(event) {
+  event.preventDefault();
+  mostrarPortada();
+});
+
+/* ABRIR DISEÑO 3D DESDE EL MENÚ Y EL ÍNDICE */
+
+document.querySelectorAll('a[href="#diseno3d"]').forEach(function(enlace) {
+  enlace.addEventListener("click", function(event) {
     event.preventDefault();
-
-    portada.style.display = "none";
-    indice.classList.add("visible");
-
-    menuIndice.classList.add("abierto");
-    botonIndice.setAttribute("aria-expanded", "true");
-
-    window.scrollTo(0, 0);
-
+    mostrarDiseno3D();
   });
+});
 
-  /* VOLVER A HOME */
+/* VOLVER AL ÍNDICE DESDE DISEÑO 3D */
 
-  document.querySelector(".menu-home").addEventListener("click", function(event) {
+document.getElementById("volverIndice").addEventListener("click", function() {
+  mostrarIndice();
+});
 
-    event.preventDefault();
+/* CERRAR MENÚ AL HACER CLIC FUERA */
 
-    indice.classList.remove("visible");
-    portada.style.display = "flex";
-
-    menuIndice.classList.remove("abierto");
-    botonIndice.setAttribute("aria-expanded", "false");
-
-    window.scrollTo(0, 0);
-
-  });
-
-  /* CERRAR EL MENÚ AL HACER CLIC FUERA */
-
-  document.addEventListener("click", function(event) {
-
-    if (!menuIndice.contains(event.target)) {
-
-      menuIndice.classList.remove("abierto");
-      botonIndice.setAttribute("aria-expanded", "false");
-
-    }
-
-  });
-
-  /* CERRAR EL MENÚ AL ELEGIR UNA CATEGORÍA */
-
-  document.querySelectorAll(".submenu a").forEach(function(enlace) {
-
-    enlace.addEventListener("click", function() {
-
-      menuIndice.classList.remove("abierto");
-      botonIndice.setAttribute("aria-expanded", "false");
-
-    });
-
-  });
+document.addEventListener("click", function(event) {
+  if (!menuIndice.contains(event.target)) {
+    cerrarMenu();
+  }
+});
 
 </script>
 
