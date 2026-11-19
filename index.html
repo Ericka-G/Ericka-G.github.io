@@ -279,65 +279,59 @@
 
 
     /* =====================================
-   SECCIÓN DEL ÍNDICE
-===================================== */
+       SECCIÓN DEL ÍNDICE
+    ===================================== */
 
-.indice {
-  min-height: 100vh;
-  width: 100%;
-  padding: 100px 24px;
-  background-color: #080808;
+    .indice {
+      min-height: 100vh;
+      width: 100%;
+      padding: 100px 24px;
+      background-color: #080808;
 
-  display: none;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
 
-  position: relative;
-  overflow: hidden;
-  isolation: isolate;
-  scroll-margin-top: 0;
-}
+      position: relative;
+      overflow: hidden;
+      isolation: isolate;
+      scroll-margin-top: 0;
+    }
 
-/* MOSTRAR EL ÍNDICE AL SELECCIONARLO */
+    .indice.visible {
+      display: flex;
+    }
 
-.indice.visible {
-  display: flex;
-}
+    .indice::before {
+      content: "";
+      position: absolute;
+      inset: -12%;
 
-/* IMAGEN ANIMADA DE FONDO */
+      background-image: url("fondo-git.png");
+      background-size: 90% 90%;
+      background-position: center;
+      background-repeat: no-repeat;
 
-.indice::before {
-  content: "";
-  position: absolute;
-  inset: -12%;
+      z-index: -1;
+      pointer-events: none;
 
-  background-image: url("fondo-git.png");
-  background-size: 90% 90%;
-  background-position: center;
-  background-repeat: no-repeat;
+      animation: movimiento-aurora 35s ease-in-out infinite alternate;
+    }
 
-  z-index: -1;
-  pointer-events: none;
+    @keyframes movimiento-aurora {
+      0% {
+        transform: translate(-3%, -1%) scale(1.05) skewX(-1deg);
+      }
 
-  animation: movimiento-aurora 35s ease-in-out infinite alternate;
-}
+      50% {
+        transform: translate(1%, 2%) scale(1.10) skewX(1deg);
+      }
 
-/* MOVIMIENTO Y DISTORSIÓN LENTA */
-
-@keyframes movimiento-aurora {
-  0% {
-    transform: translate(-3%, -1%) scale(1.05) skewX(-1deg);
-  }
-
-  50% {
-    transform: translate(1%, 2%) scale(1.10) skewX(1deg);
-  }
-
-  100% {
-    transform: translate(3%, -1%) scale(1.06) skewX(-1deg);
-  }
-}
+      100% {
+        transform: translate(3%, -1%) scale(1.06) skewX(-1deg);
+      }
+    }
 
 
     /* =====================================
@@ -364,8 +358,6 @@
       display: flex;
       gap: 5px;
     }
-
-    /* ANIMACIÓN DE LETRAS ONDULANTES */
 
     .indice h2 span {
       display: inline-block;
@@ -507,10 +499,8 @@
       transform: scale(1.04);
     }
 
-    /* ESTRELLAS DE LAS CATEGORÍAS */
-
     .categoria .estrella {
-      color: ##ffe1a6;
+      color: #ffe1a6;
       display: inline-block;
       font-size: 17px;
 
@@ -530,7 +520,7 @@
     }
 
     @keyframes estrella {
-      50%, 100% {
+      0%, 100% {
         opacity: 0.5;
         text-shadow: 0 0 3px #c9a0ff;
       }
@@ -568,8 +558,6 @@
       opacity: 0;
     }
 
-    /* PARTÍCULAS QUE DEJA EL CURSOR */
-
     .estela-particula {
       position: fixed;
       top: 0;
@@ -600,10 +588,7 @@
         transform: translate(-50%, -100%) scale(0.2);
       }
     }
-
-
    
-
 /* =====================================
    SECCIÓN DISEÑO 3D
 ===================================== */
@@ -910,113 +895,112 @@
 }
 
 
-    
-    /* =====================================
-       ADAPTACIÓN PARA CELULARES
-    ===================================== */
+/* =====================================
+   ADAPTACIÓN PARA CELULARES
+===================================== */
 
-    @media (max-width: 600px) {
+@media (max-width: 600px) {
 
-      .portada {
-        padding: 110px 12px 12px;
-      }
+  .portada {
+    padding: 110px 12px 12px;
+  }
 
-      .portada::before {
-        width: 100%;
-      }
+  .portada::before {
+    width: 100%;
+  }
 
-      .menu-principal {
-        top: 18px;
-        left: 18px;
-        gap: 14px;
-      }
+  .menu-principal {
+    top: 18px;
+    left: 18px;
+    gap: 14px;
+  }
 
-      .menu-principal a,
-      .boton-menu {
-        font-size: 9px;
-      }
+  .menu-principal a,
+  .boton-menu {
+    font-size: 9px;
+  }
 
-      .submenu {
-        min-width: 190px;
-      }
+  .submenu {
+    min-width: 190px;
+  }
 
-      .redes {
-        top: 52px;
-        right: 18px;
-        gap: 12px;
-      }
+  .redes {
+    top: 52px;
+    right: 18px;
+    gap: 12px;
+  }
 
-      .redes a {
-        font-size: 9px;
-      }
+  .redes a {
+    font-size: 9px;
+  }
 
-      .redes svg {
-        width: 13px;
-        height: 13px;
-      }
+  .redes svg {
+    width: 13px;
+    height: 13px;
+  }
 
-      .indicador {
-        font-size: 9px;
-        bottom: 20px;
-        letter-spacing: 1.5px;
-        padding: 10px 16px;
-      }
+  .indicador {
+    font-size: 9px;
+    bottom: 20px;
+    letter-spacing: 1.5px;
+    padding: 10px 16px;
+  }
 
-      .indice {
-        padding: 60px 20px;
-      }
+  .indice {
+    padding: 60px 20px;
+  }
 
-      .titulo-indice-wrap {
-        margin-bottom: 55px;
-      }
+  .titulo-indice-wrap {
+    margin-bottom: 55px;
+  }
 
-      .indice h2 {
-        font-size: 48px;
-        gap: 2px;
-      }
+  .indice h2 {
+    font-size: 48px;
+    gap: 2px;
+  }
 
-      .categorias {
-        gap: 28px;
-      }
+  .categorias {
+    gap: 28px;
+  }
 
-      .categoria {
-        font-size: 13px;
-        letter-spacing: 1.5px;
-        gap: 9px;
-      }
+  .categoria {
+    font-size: 13px;
+    letter-spacing: 1.5px;
+    gap: 9px;
+  }
 
-      .categoria .estrella {
-        font-size: 13px;
-      }
+  .categoria .estrella {
+    font-size: 13px;
+  }
 
-      /* No mostramos el efecto de cursor en celulares */
+  /* No mostramos el efecto de cursor en celulares */
 
-      #halo-cursor,
-      .estela-particula {
-        display: none;
-      }
-    }
+  #halo-cursor,
+  .estela-particula {
+    display: none;
+  }
+}
 
 
-    /* =====================================
-       RESPETAR PREFERENCIAS DE MOVIMIENTO
-    ===================================== */
+/* =====================================
+   RESPETAR PREFERENCIAS DE MOVIMIENTO
+===================================== */
 
-    @media (prefers-reduced-motion: reduce) {
+@media (prefers-reduced-motion: reduce) {
 
-      .indice h2 span,
-      .particula,
-      .categoria .estrella,
-      .indice::before {
-        animation: none;
-      }
+  .indice h2 span,
+  .particula,
+  .categoria .estrella,
+  .indice::before {
+    animation: none;
+  }
 
-      html {
-        scroll-behavior: auto;
-      }
-    }
+  html {
+    scroll-behavior: auto;
+  }
+}
 
-  </style>
+</style>
 </head>
 
 
@@ -1113,7 +1097,7 @@
   ===================================== -->
 
   <section class="portada" id="home">
-  
+
 
   </section>
 
@@ -1175,10 +1159,6 @@
 
   </section>
 
-  
-<!-- =====================================
-     SECCIÓN DISEÑO 3D
-===================================== -->
 
 
 <!-- =====================================
@@ -1206,8 +1186,8 @@
 
       <!-- PROYECTO 01: MONTAÑAS / NAVE -->
       <button class="mosaico" data-proyecto="montanas">
-        <img src="Dise%C3%B1o%203D/Monta%C3%B1as.jpeg"
-             alt="Proyecto Montañas">
+        <img src="Proyectos%20acad%C3%A9micos/Monta%C3%B1as.jpeg"
+             alt="PROYECTOS ACADÉMICOS">
         <div class="mosaico-info">
           <h3>01 — MONTAÑAS / NAVE</h3>
         </div>
@@ -1215,8 +1195,8 @@
 
       <!-- PROYECTO 02: LOST -->
       <button class="mosaico" data-proyecto="lost">
-        <img src="Dise%C3%B1o%203D/LOST-FIN-1.png"
-             alt="Proyecto LOST">
+        <img src="MV%20LOST%20-%20RM/LOST-FIN-1.png"
+             alt="MV LOST - RM">
         <div class="mosaico-info">
           <h3>02 — LOST</h3>
         </div>
@@ -1224,8 +1204,8 @@
 
       <!-- PROYECTO 03: ATEEZ -->
       <button class="mosaico" data-proyecto="ateez">
-        <img src="Dise%C3%B1o%203D/Ateez1.png"
-             alt="Proyecto ATEEZ">
+        <img src="MV%20BAD%20-%20ATEEZ/Ateez1.png"
+             alt="MV BAD - ATEEZ">
         <div class="mosaico-info">
           <h3>03 — ATEEZ</h3>
         </div>
@@ -1233,8 +1213,8 @@
 
       <!-- PROYECTO 04: MANIAC -->
       <button class="mosaico" data-proyecto="maniac">
-        <img src="Dise%C3%B1o%203D/Maniac.png"
-             alt="Proyecto MANIAC">
+        <img src="MV%20MANIAC%20-%20STRAY%20KIDS/Maniac.png"
+             alt="MV MANIAC - STRAY KIDS">
         <div class="mosaico-info">
           <h3>04 — MANIAC</h3>
         </div>
@@ -1242,8 +1222,8 @@
 
       <!-- PROYECTO 05: VELOCIDADE -->
       <button class="mosaico" data-proyecto="velocidade">
-        <img src="Dise%C3%B1o%203D/Velocidade1.png"
-             alt="Proyecto VELOCIDADE">
+        <img src="MV%20VELOCIDADE%20-%20SANTOS%20BRAVOS/Velocidade1.png"
+             alt="MV VELOCIDADE - SANTOS BRAVOS">
         <div class="mosaico-info">
           <h3>05 — VELOCIDADE</h3>
         </div>
@@ -1251,8 +1231,8 @@
 
       <!-- PROYECTO 06: LIKE CRAZY -->
       <button class="mosaico" data-proyecto="likecrazy">
-        <img src="Dise%C3%B1o%203D/LikeCrazy-1.png"
-             alt="Proyecto LIKE CRAZY">
+        <img src="MV%20LIKE%20CRAZY%20-%20JIMIN/LikeCrazy-1.png"
+             alt="MV LIKE CRAZY - JIMIN">
         <div class="mosaico-info">
           <h3>06 — LIKE CRAZY</h3>
         </div>
@@ -1260,227 +1240,58 @@
 
       <!-- PROYECTO 07: ASSETS -->
       <button class="mosaico" data-proyecto="assets">
-        <img src="Dise%C3%B1o%203D/Holder-JM.png"
-             alt="Proyecto ASSETS">
+        <img src="3D%20ASSETS/Holder-JM.png"
+             alt="3D ASSETS">
         <div class="mosaico-info">
           <h3>07 — ASSETS</h3>
         </div>
       </button>
 
     </div>
-
+    
     <button class="volver-indice" id="volverIndice">
       ✦ VOLVER AL ÍNDICE ✦
     </button>
 
   </div>
 
-
   <!-- =====================================
-       GALERÍA 01: MONTAÑAS / NAVE
+       GALERÍAS INDIVIDUALES
   ====================================== -->
 
+  <!-- GALERÍA 01: MONTAÑAS / NAVE -->
   <div class="galeria-proyecto" id="proyecto-montanas">
-
-    <header class="encabezado-proyecto">
-      <h2>MONTAÑAS / NAVE</h2>
-      <p>3D ENVIRONMENT</p>
-    </header>
-
-    <div class="contenido-proyecto">
-
-      <img src="Dise%C3%B1o%203D/Monta%C3%B1as.jpeg"
-           alt="Escenario de montañas">
-
-      <img src="Dise%C3%B1o%203D/Nave.jpeg"
-           alt="Escenario de nave">
-
-    </div>
-
-    <button class="volver-proyectos">✦ VOLVER A PROYECTOS ✦</button>
-
+    <!-- AQUÍ VA EL CONTENIDO DE MONTAÑAS Y NAVE -->
   </div>
 
-
-  <!-- =====================================
-       GALERÍA 02: LOST
-  ====================================== -->
-
+  <!-- GALERÍA 02: LOST -->
   <div class="galeria-proyecto" id="proyecto-lost">
-
-    <header class="encabezado-proyecto">
-      <h2>LOST</h2>
-      <p>3D ENVIRONMENT</p>
-    </header>
-
-    <div class="contenido-proyecto">
-
-      <img src="Dise%C3%B1o%203D/LOST-FIN-1.png"
-           alt="Render LOST 1">
-
-      <img src="Dise%C3%B1o%203D/LOST-FIN-2.png"
-           alt="Render LOST 2">
-
-    </div>
-
-    <button class="volver-proyectos">✦ VOLVER A PROYECTOS ✦</button>
-
+    <!-- AQUÍ VAN LAS IMÁGENES DE LOST -->
   </div>
 
-
-  <!-- =====================================
-       GALERÍA 03: ATEEZ
-  ====================================== -->
-
+  <!-- GALERÍA 03: ATEEZ -->
   <div class="galeria-proyecto" id="proyecto-ateez">
-
-    <header class="encabezado-proyecto">
-      <h2>ATEEZ</h2>
-      <p>SET RECREATION</p>
-    </header>
-
-    <div class="contenido-proyecto">
-
-      <img src="Dise%C3%B1o%203D/Ateez1.png"
-           alt="Render ATEEZ 1">
-
-      <img src="Dise%C3%B1o%203D/Ateez2.png"
-           alt="Render ATEEZ 2">
-
-      <img src="Dise%C3%B1o%203D/Ateez3.png"
-           alt="Render ATEEZ 3">
-
-      <video controls preload="metadata">
-        <source src="Dise%C3%B1o%203D/Ateez4.mp4" type="video/mp4">
-        Tu navegador no puede reproducir este video.
-      </video>
-
-    </div>
-
-    <button class="volver-proyectos">✦ VOLVER A PROYECTOS ✦</button>
-
+    <!-- AQUÍ VAN LAS IMÁGENES DE ATEEZ -->
   </div>
 
-
-  <!-- =====================================
-       GALERÍA 04: MANIAC
-  ====================================== -->
-
+  <!-- GALERÍA 04: MANIAC -->
   <div class="galeria-proyecto" id="proyecto-maniac">
-
-    <header class="encabezado-proyecto">
-      <h2>MANIAC</h2>
-      <p>SET RECREATION</p>
-    </header>
-
-    <div class="contenido-proyecto">
-
-      <img src="Dise%C3%B1o%203D/Maniac.png"
-           alt="Render MANIAC">
-
-    </div>
-
-    <button class="volver-proyectos">✦ VOLVER A PROYECTOS ✦</button>
-
+    <!-- AQUÍ VA LA IMAGEN DE MANIAC -->
   </div>
 
-
-  <!-- =====================================
-       GALERÍA 05: VELOCIDADE
-  ====================================== -->
-
+  <!-- GALERÍA 05: VELOCIDADE -->
   <div class="galeria-proyecto" id="proyecto-velocidade">
-
-    <header class="encabezado-proyecto">
-      <h2>VELOCIDADE</h2>
-      <p>3D ENVIRONMENT</p>
-    </header>
-
-    <div class="contenido-proyecto">
-
-      <img src="Dise%C3%B1o%203D/Velocidade1.png"
-           alt="Render VELOCIDADE 1">
-
-      <img src="Dise%C3%B1o%203D/Velocidade2.png"
-           alt="Render VELOCIDADE 2">
-
-      <img src="Dise%C3%B1o%203D/Velocidade4.png"
-           alt="Render VELOCIDADE 4">
-
-      <video controls preload="metadata">
-        <source src="Dise%C3%B1o%203D/Velocidade3.mp4" type="video/mp4">
-        Tu navegador no puede reproducir este video.
-      </video>
-
-    </div>
-
-    <button class="volver-proyectos">✦ VOLVER A PROYECTOS ✦</button>
-
+    <!-- AQUÍ VAN LAS IMÁGENES DE VELOCIDADE -->
   </div>
 
-
-  <!-- =====================================
-       GALERÍA 06: LIKE CRAZY
-  ====================================== -->
-
+  <!-- GALERÍA 06: LIKE CRAZY -->
   <div class="galeria-proyecto" id="proyecto-likecrazy">
-
-    <header class="encabezado-proyecto">
-      <h2>LIKE CRAZY</h2>
-      <p>SET RECREATION</p>
-    </header>
-
-    <div class="contenido-proyecto">
-
-      <img src="Dise%C3%B1o%203D/LikeCrazy-1.png"
-           alt="Render LIKE CRAZY 1">
-
-      <img src="Dise%C3%B1o%203D/LikeCrazy-2.png"
-           alt="Render LIKE CRAZY 2">
-
-      <img src="Dise%C3%B1o%203D/LikeCrazy-3.png"
-           alt="Render LIKE CRAZY 3">
-
-    </div>
-
-    <button class="volver-proyectos">✦ VOLVER A PROYECTOS ✦</button>
-
+    <!-- AQUÍ VAN LAS IMÁGENES DE LIKE CRAZY -->
   </div>
 
-
-  <!-- =====================================
-       GALERÍA 07: ASSETS
-  ====================================== -->
-
+  <!-- GALERÍA 07: ASSETS -->
   <div class="galeria-proyecto" id="proyecto-assets">
-
-    <header class="encabezado-proyecto">
-      <h2>ASSETS</h2>
-      <p>3D ASSETS</p>
-    </header>
-
-    <div class="contenido-proyecto">
-
-      <img src="Dise%C3%B1o%203D/Holder-JM.png"
-           alt="Asset JM">
-
-      <img src="Dise%C3%B1o%203D/Holder-Nam.png"
-           alt="Asset Nam">
-
-      <video controls preload="metadata">
-        <source src="Dise%C3%B1o%203D/Holder-jm.mp4" type="video/mp4">
-        Tu navegador no puede reproducir este video.
-      </video>
-
-      <video controls preload="metadata">
-        <source src="Dise%C3%B1o%203D/holder-nam.mp4" type="video/mp4">
-        Tu navegador no puede reproducir este video.
-      </video>
-
-    </div>
-
-    <button class="volver-proyectos">✦ VOLVER A PROYECTOS ✦</button>
-
+    <!-- AQUÍ VAN LOS ASSETS -->
   </div>
 
 </section>
