@@ -1791,74 +1791,67 @@ if (puedeUsarMouse) {
 
 
 
-  <!-- =====================================
-       SCRIPT: HALO Y ESTELA DEL CURSOR
-  ===================================== -->
+  
+<!-- =====================================
+     SCRIPT: HALO Y ESTELA DEL CURSOR
+===================================== -->
 
-  <script>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
 
-    const halo = document.getElementById("halo-cursor");
+  const halo = document.getElementById("halo-cursor");
 
-    const puedeUsarMouse = window.matchMedia(
-      "(hover: hover) and (pointer: fine)"
-    ).matches;
+  if (!halo) return;
 
-    if (puedeUsarMouse) {
+  const puedeUsarMouse = window.matchMedia(
+    "(hover: hover) and (pointer: fine)"
+  ).matches;
 
-      let ultimaX = 0;
-      let ultimaY = 0;
-      let primerMovimiento = true;
+  if (!puedeUsarMouse) return;
 
-      window.addEventListener("pointermove", function(event) {
+  let ultimaX = 0;
+  let ultimaY = 0;
+  let primerMovimiento = true;
 
-        const x = event.clientX;
-        const y = event.clientY;
+  window.addEventListener("pointermove", function(event) {
 
-        /* MOVIMIENTO DEL HALO */
+    const x = event.clientX;
+    const y = event.clientY;
 
-        halo.style.left = x + "px";
-        halo.style.top = y + "px";
-        halo.style.opacity = "1";
+    halo.style.left = x + "px";
+    halo.style.top = y + "px";
+    halo.style.opacity = "1";
 
-        /* CREAR PARTÍCULAS CADA CIERTA DISTANCIA */
+    const distancia = Math.hypot(
+      x - ultimaX,
+      y - ultimaY
+    );
 
-        const distancia = Math.hypot(
-          x - ultimaX,
-          y - ultimaY
-        );
+    if (primerMovimiento || distancia > 16) {
 
-        if (primerMovimiento || distancia > 16) {
+      const particula = document.createElement("span");
 
-          const particula = document.createElement("span");
+      particula.className = "estela-particula";
+      particula.textContent = "✦";
+      particula.style.left = x + "px";
+      particula.style.top = y + "px";
 
-          particula.className = "estela-particula";
-          particula.textContent = "✦";
+      document.body.appendChild(particula);
 
-          particula.style.left = x + "px";
-          particula.style.top = y + "px";
-
-          document.body.appendChild(particula);
-
-          particula.addEventListener("animationend", function() {
-            particula.remove();
-          });
-
-          ultimaX = x;
-          ultimaY = y;
-          primerMovimiento = false;
-
-        }
-
+      particula.addEventListener("animationend", function() {
+        particula.remove();
       });
 
-      window.addEventListener("pointerleave", function() {
-        halo.style.opacity = "0";
-      });
-
+      ultimaX = x;
+      ultimaY = y;
+      primerMovimiento = false;
     }
 
-  </script>
+  });
 
+  document.addEventListener("pointerleave", function() {
+    halo.style.opacity = "0";
+  });
 
-</body>
-</html>
+});
+</script>
