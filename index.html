@@ -896,6 +896,202 @@
 
 
 /* =====================================
+   SECCIÓN MOTION GRAPHICS
+===================================== */
+
+.motion {
+  display: none;
+  min-height: 100vh;
+  width: 100%;
+  padding: 130px 8% 100px;
+  background-color: #080808;
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.motion.visible {
+  display: block;
+}
+
+/* FONDO DECORATIVO */
+
+.motion::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 15% 20%,
+      rgba(201,160,255,0.09), transparent 30%),
+    radial-gradient(circle at 85% 75%,
+      rgba(201,160,255,0.07), transparent 30%);
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* ENCABEZADO */
+
+.encabezado-motion {
+  text-align: center;
+  margin-bottom: 65px;
+  position: relative;
+  z-index: 1;
+}
+
+.encabezado-motion h2 {
+  font-family: "gloridot", sans-serif;
+  font-weight: 400;
+  font-size: clamp(55px, 9vw, 110px);
+  color: #ffffff;
+  letter-spacing: 4px;
+  text-shadow: 0 0 18px rgba(201,160,255,0.25);
+}
+
+.encabezado-motion p {
+  margin-top: 15px;
+  color: #c9a0ff;
+  font-size: 10px;
+  letter-spacing: 4px;
+}
+
+/* GALERÍA */
+
+.galeria-motion {
+  max-width: 1250px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 35px;
+  position: relative;
+  z-index: 1;
+}
+
+/* CONTENEDORES */
+
+.item-motion {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  border: 1px solid rgba(201,160,255,0.2);
+  border-radius: 5px;
+  background: #100c15;
+  transition:
+    transform 0.4s ease,
+    border-color 0.4s ease,
+    box-shadow 0.4s ease;
+}
+
+.item-motion:hover {
+  transform: translateY(-7px);
+  border-color: rgba(201,160,255,0.85);
+  box-shadow: 0 0 25px rgba(201,160,255,0.2);
+}
+
+/* VIDEOS */
+
+.item-motion video {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: contain;
+  background: #080808;
+}
+
+/* MINIATURA DE TIKTOK */
+
+.item-motion a {
+  display: block;
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+.item-motion a img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  transition:
+    transform 0.7s ease,
+    filter 0.5s ease;
+}
+
+.item-motion a:hover img {
+  transform: scale(1.04);
+  filter: brightness(0.45);
+}
+
+/* INDICADOR DE REPRODUCCIÓN */
+
+.play-motion {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 48px;
+  text-shadow: 0 0 18px rgba(201,160,255,0.8);
+  pointer-events: none;
+  transition: transform 0.4s ease;
+}
+
+.item-motion a:hover .play-motion {
+  transform: scale(1.2);
+}
+
+/* NOMBRE DEL PROYECTO */
+
+.nombre-motion {
+  padding: 17px 12px;
+  color: #c9a0ff;
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-align: center;
+}
+
+/* BOTÓN DE REGRESO */
+
+.volver-motion {
+  display: block;
+  margin: 65px auto 0;
+  padding: 12px 24px;
+  background: transparent;
+  border: 1px solid rgba(201,160,255,0.6);
+  border-radius: 25px;
+  color: #c9a0ff;
+  font-size: 10px;
+  letter-spacing: 2px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.volver-motion:hover {
+  color: white;
+  background: rgba(95,45,130,0.35);
+  box-shadow: 0 0 18px rgba(201,160,255,0.35);
+}
+
+/* ADAPTACIÓN MÓVIL */
+
+@media (max-width: 700px) {
+  .motion {
+    padding: 110px 18px 70px;
+  }
+
+  .encabezado-motion {
+    margin-bottom: 40px;
+  }
+
+  .galeria-motion {
+    grid-template-columns: 1fr;
+    gap: 25px;
+  }
+}
+
+    
+/* =====================================
    ADAPTACIÓN PARA CELULARES
 ===================================== */
 
@@ -1478,6 +1674,83 @@
 
 </section>
 
+  
+<!-- =====================================
+     SECCIÓN MOTION GRAPHICS
+===================================== -->
+
+<section class="motion" id="motion">
+
+  <header class="encabezado-motion">
+    <h2>Motion Graphics</h2>
+    <p>SELECTED WORKS · MOTION DESIGN</p>
+  </header>
+
+  <div class="galeria-motion">
+
+    <!-- PROYECTO 01: FYA EDIT -->
+
+    <div class="item-motion">
+
+      <video controls playsinline preload="metadata">
+        <source src="FYA_Edit.mp4" type="video/mp4">
+        Tu navegador no puede reproducir este video.
+      </video>
+
+      <div class="nombre-motion">
+        01 — FYA EDIT
+      </div>
+
+    </div>
+
+
+    <!-- PROYECTO 02: KARAOKE MOTION -->
+
+    <div class="item-motion">
+
+      <video controls playsinline preload="metadata">
+        <source src="karaoke_motion.mp4" type="video/mp4">
+        Tu navegador no puede reproducir este video.
+      </video>
+
+      <div class="nombre-motion">
+        02 — KARAOKE MOTION
+      </div>
+
+    </div>
+
+
+    <!-- PROYECTO 03: LIKE ANIMALS - TIKTOK -->
+
+    <div class="item-motion">
+
+      <a href="https://vt.tiktok.com/ZSpERFb9M/"
+         target="_blank"
+         rel="noopener noreferrer"
+         aria-label="Ver Like Animals en TikTok">
+
+        <img src="LikeAnimals.png"
+             alt="Like Animals - Motion Graphics"
+             loading="lazy">
+
+        <span class="play-motion">▶</span>
+
+      </a>
+
+      <div class="nombre-motion">
+        03 — LIKE ANIMALS
+      </div>
+
+    </div>
+
+  </div>
+
+  <button class="volver-motion" id="volverMotion">
+    ✦ VOLVER AL ÍNDICE ✦
+  </button>
+
+</section>
+
 
   <!-- =====================================
        HALO DEL CURSOR
@@ -1502,6 +1775,7 @@
 const portada = document.querySelector(".portada");
 const indice = document.querySelector(".indice");
 const diseno3d = document.querySelector(".diseno3d");
+const motion = document.querySelector(".motion");
 
 const menuIndice = document.getElementById("menuIndice");
 const botonIndice = document.getElementById("botonIndice");
@@ -1536,6 +1810,7 @@ function mostrarPortada() {
 
   indice.classList.remove("visible");
   diseno3d.classList.remove("visible");
+  motion.classList.remove("visible");
 
   volverAMosaicos();
   cerrarMenu();
@@ -1551,6 +1826,7 @@ function mostrarIndice() {
 
   indice.classList.add("visible");
   diseno3d.classList.remove("visible");
+  motion.classList.remove("visible");
 
   volverAMosaicos();
   cerrarMenu();
@@ -1566,6 +1842,23 @@ function mostrarDiseno3D() {
 
   indice.classList.remove("visible");
   diseno3d.classList.add("visible");
+  motion.classList.remove("visible");
+
+  volverAMosaicos();
+  cerrarMenu();
+
+  window.scrollTo(0, 0);
+}
+
+
+/* MOSTRAR MOTION GRAPHICS */
+
+function mostrarMotion() {
+  portada.style.display = "none";
+
+  indice.classList.remove("visible");
+  diseno3d.classList.remove("visible");
+  motion.classList.add("visible");
 
   volverAMosaicos();
   cerrarMenu();
@@ -1606,7 +1899,24 @@ document.getElementById("volverIndice").addEventListener("click", function() {
   mostrarIndice();
 });
 
+/* ABRIR MOTION GRAPHICS DESDE MENÚ E ÍNDICE */
 
+document.querySelectorAll('a[href="#motion"]').forEach(function(enlace) {
+
+  enlace.addEventListener("click", function(event) {
+    event.preventDefault();
+    mostrarMotion();
+  });
+
+});
+
+
+/* VOLVER AL ÍNDICE DESDE MOTION GRAPHICS */
+
+document.getElementById("volverMotion").addEventListener("click", function() {
+  mostrarIndice();
+});
+    
 /* ABRIR GALERÍA AL HACER CLIC EN UN MOSAICO */
 
 document.querySelectorAll(".mosaico").forEach(function(mosaico) {
