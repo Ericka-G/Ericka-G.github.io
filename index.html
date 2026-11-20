@@ -951,31 +951,34 @@
   inset: -15%;
 
   background:
-    radial-gradient(
-      ellipse 45% 12% at 20% 35%,
-      rgba(235, 237, 245, 0.32),
-      transparent 75%
-    ),
+  linear-gradient(
+    135deg,
+    transparent 20%,
+    rgba(255,255,255,0.08) 29%,
+    rgba(235,238,245,0.65) 31%,
+    rgba(120,125,140,0.25) 33%,
+    rgba(255,255,255,0.75) 35%,
+    transparent 39%
+  ),
 
-    radial-gradient(
-      ellipse 40% 10% at 75% 25%,
-      rgba(255, 255, 255, 0.24),
-      transparent 75%
-    ),
+  linear-gradient(
+    45deg,
+    transparent 40%,
+    rgba(255,255,255,0.12) 46%,
+    rgba(220,225,235,0.55) 48%,
+    rgba(255,255,255,0.7) 50%,
+    transparent 54%
+  ),
 
-    radial-gradient(
-      ellipse 50% 14% at 55% 75%,
-      rgba(190, 194, 210, 0.28),
-      transparent 75%
-    ),
+  linear-gradient(
+    160deg,
+    transparent 55%,
+    rgba(201,160,255,0.22) 59%,
+    rgba(255,255,255,0.45) 61%,
+    transparent 65%
+  );
 
-    radial-gradient(
-      ellipse 35% 9% at 90% 65%,
-      rgba(201, 160, 255, 0.18),
-      transparent 75%
-    );
-
-  filter: url(#liquidDistortion) blur(12px);
+  filter: url(#liquidDistortion);
 
   animation: liquidFlow 18s ease-in-out infinite alternate;
 }
@@ -1004,7 +1007,7 @@
       transparent 62%
     );
 
-  filter: blur(9px);
+  filter: none;
 
   animation: liquidReflection 14s ease-in-out infinite alternate;
 }
