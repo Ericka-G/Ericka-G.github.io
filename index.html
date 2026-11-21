@@ -1955,111 +1955,75 @@ document.addEventListener("click", function(event) {
 });
 
 
+
 /* =====================================
    GENERADOR DE ESTRELLAS DE FONDO
+   DISEÑO 3D + MOTION GRAPHICS
 ===================================== */
 
 const fondoEstrellas = document.getElementById("fondoEstrellas");
+const fondoEstrellasMotion = document.getElementById("fondoEstrellasMotion");
 const cantidadEstrellas = 65;
 
-/* =====================================
-   GENERADOR DE ESTRELLAS - MOTION
-===================================== */
+/* GENERAR ESTRELLAS PARA CADA SECCIÓN */
 
-const fondoEstrellasMotion = document.getElementById("fondoEstrellasMotion");
+function generarEstrellas(contenedor) {
 
-for (let i = 0; i < cantidadEstrellas; i++) {
+  if (!contenedor) return;
 
-  const estrella = document.createElement("span");
+  for (let i = 0; i < cantidadEstrellas; i++) {
 
-  estrella.classList.add("estrella-fondo");
+    const estrella = document.createElement("span");
 
-  const formas = ["✦", "✧", "★", "⊹"];
+    estrella.classList.add("estrella-fondo");
 
-  estrella.textContent = formas[
-    Math.floor(Math.random() * formas.length)
-  ];
+    const formas = ["✦", "✧", "★", "⊹"];
 
-  if (Math.random() < 0.28) {
-    estrella.classList.add("morada");
+    estrella.textContent = formas[
+      Math.floor(Math.random() * formas.length)
+    ];
+
+    if (Math.random() < 0.28) {
+      estrella.classList.add("morada");
+    }
+
+    estrella.style.left = Math.random() * 100 + "%";
+    estrella.style.top = Math.random() * 100 + "%";
+
+    const tamanos = [5, 7, 9, 11, 13];
+
+    estrella.style.fontSize =
+      tamanos[Math.floor(Math.random() * tamanos.length)] + "px";
+
+    estrella.style.setProperty(
+      "--duracion",
+      (3 + Math.random() * 4) + "s"
+    );
+
+    estrella.style.setProperty(
+      "--retraso",
+      (Math.random() * 5) + "s"
+    );
+
+    contenedor.appendChild(estrella);
+
   }
 
-  estrella.style.left = Math.random() * 100 + "%";
-  estrella.style.top = Math.random() * 100 + "%";
-
-  const tamanos = [5, 7, 9, 11, 13];
-
-  estrella.style.fontSize =
-    tamanos[Math.floor(Math.random() * tamanos.length)] + "px";
-
-  estrella.style.setProperty(
-    "--duracion",
-    (3 + Math.random() * 4) + "s"
-  );
-
-  estrella.style.setProperty(
-    "--retraso",
-    (Math.random() * 5) + "s"
-  );
-
-  fondoEstrellasMotion.appendChild(estrella);
-
 }
-    
-for (let i = 0; i < cantidadEstrellas; i++) {
 
-  const estrella = document.createElement("span");
+/* CREAR LAS ESTRELLAS */
 
-  estrella.classList.add("estrella-fondo");
-
-  /* FORMAS DE LAS ESTRELLAS */
-
-  const formas = ["✦", "✧", "★", "⊹"];
-  estrella.textContent = formas[
-    Math.floor(Math.random() * formas.length)
-  ];
-
-  /* ALGUNAS ESTRELLAS MORADAS */
-
-  if (Math.random() < 0.28) {
-    estrella.classList.add("morada");
-  }
-
-  /* POSICIÓN */
-
-  estrella.style.left = Math.random() * 100 + "%";
-  estrella.style.top = Math.random() * 100 + "%";
-
-  /* TAMAÑO */
-
-  const tamanos = [5, 7, 9, 11, 13];
-
-  estrella.style.fontSize =
-    tamanos[Math.floor(Math.random() * tamanos.length)] + "px";
-
-  /* DURACIÓN Y RETRASO ALEATORIOS */
-
-  estrella.style.setProperty(
-    "--duracion",
-    (3 + Math.random() * 4) + "s"
-  );
-
-  estrella.style.setProperty(
-    "--retraso",
-    (Math.random() * 5) + "s"
-  );
-
-  fondoEstrellas.appendChild(estrella);
-
-}
+generarEstrellas(fondoEstrellas);
+generarEstrellas(fondoEstrellasMotion);
 
 
 /* =====================================
    ESTRELLAS QUE SE ALEJAN DEL CURSOR
-   DISEÑO 3D + MOTION GRAPHICS
 ===================================== */
 
-const todasLasEstrellas = document.querySelectorAll(".estrella-fondo");
+const puedeUsarMouse = window.matchMedia(
+  "(hover: hover) and (pointer: fine)"
+).matches;
 
 const seccionesEstrellas = [
   diseno3d,
@@ -2122,9 +2086,11 @@ if (puedeUsarMouse) {
       const estrellas = seccion.querySelectorAll(".estrella-fondo");
 
       estrellas.forEach(function(estrella) {
+
         estrella.style.setProperty("--dx", "0px");
         estrella.style.setProperty("--dy", "0px");
         estrella.style.setProperty("--escala", "1");
+
       });
 
     });
@@ -2133,22 +2099,7 @@ if (puedeUsarMouse) {
 
 }
 
-  diseno3d.addEventListener("pointerleave", function() {
-
-    estrellasFondo.forEach(function(estrella) {
-      estrella.style.setProperty("--dx", "0px");
-      estrella.style.setProperty("--dy", "0px");
-      estrella.style.setProperty("--escala", "1");
-    });
-
-  });
-
-}
-
-
 </script>
-
-
 
   
 <!-- =====================================
