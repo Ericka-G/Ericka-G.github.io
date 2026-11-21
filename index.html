@@ -916,141 +916,88 @@
 
 /* FONDO DECORATIVO */
 
+
 /* =====================================
-   LIQUID GLASS - FONDO MOTION
+   LIQUID CHROME GLASS - MOTION
 ===================================== */
 
 .motion {
   isolation: isolate;
+  background: #050609;
 }
 
-/* CAPA PRINCIPAL */
+/* CONTENEDOR DEL FONDO */
 
 .fondo-liquid-glass {
   position: absolute;
-  inset: -10%;
+  inset: -5%;
   z-index: -1;
-  pointer-events: none;
   overflow: hidden;
+  pointer-events: none;
 
-  transform:
-    translate3d(
-      calc(var(--cursor-x, 0) * -18px),
-      calc(var(--cursor-y, 0) * -18px),
-      0
-    );
-
-  transition: transform 0.8s ease-out;
-}
-
-/* ESTELAS DE LÍQUIDO */
-
-.fondo-liquid-glass::before {
-  content: "";
-  position: absolute;
-  inset: -15%;
-
-  background:
-  linear-gradient(
-    135deg,
-    transparent 20%,
-    rgba(255,255,255,0.08) 29%,
-    rgba(235,238,245,0.65) 31%,
-    rgba(120,125,140,0.25) 33%,
-    rgba(255,255,255,0.75) 35%,
-    transparent 39%
-  ),
-
-  linear-gradient(
-    45deg,
-    transparent 40%,
-    rgba(255,255,255,0.12) 46%,
-    rgba(220,225,235,0.55) 48%,
-    rgba(255,255,255,0.7) 50%,
-    transparent 54%
-  ),
-
-  linear-gradient(
-    160deg,
-    transparent 55%,
-    rgba(201,160,255,0.22) 59%,
-    rgba(255,255,255,0.45) 61%,
-    transparent 65%
+  transform: translate3d(
+    var(--move-x, 0px),
+    var(--move-y, 0px),
+    0
   );
 
-  filter: url(#liquidDistortion);
-
-  animation: liquidFlow 18s ease-in-out infinite alternate;
+  transition: transform 1s cubic-bezier(.2,.7,.2,1);
+  will-change: transform;
 }
 
-/* REFLEJOS DE CRISTAL */
-
-.fondo-liquid-glass::after {
-  content: "";
+.fondo-liquid-glass svg {
   position: absolute;
-  inset: -10%;
-
-  background:
-    linear-gradient(
-      115deg,
-      transparent 25%,
-      rgba(255,255,255,0.08) 38%,
-      rgba(225,230,245,0.22) 42%,
-      rgba(255,255,255,0.04) 47%,
-      transparent 58%
-    ),
-
-    linear-gradient(
-      155deg,
-      transparent 45%,
-      rgba(201,160,255,0.12) 52%,
-      transparent 62%
-    );
-
-  filter: none;
-
-  animation: liquidReflection 14s ease-in-out infinite alternate;
+  width: 100%;
+  height: 100%;
+  inset: 0;
+  overflow: visible;
 }
 
-/* MOVIMIENTO DEL LÍQUIDO */
+/* MOVIMIENTO AUTÓNOMO */
 
-@keyframes liquidFlow {
+.liquid-forma-1 {
+  transform-origin: center;
+  animation: glassFloat1 24s ease-in-out infinite alternate;
+}
+
+.liquid-forma-2 {
+  transform-origin: center;
+  animation: glassFloat2 30s ease-in-out infinite alternate;
+}
+
+.liquid-forma-3 {
+  transform-origin: center;
+  animation: glassFloat3 21s ease-in-out infinite alternate;
+}
+
+@keyframes glassFloat1 {
   0% {
-    transform: translate(-4%, -2%) rotate(-8deg) scale(1);
+    transform: translate(-12px, 8px) scale(1);
   }
-
-  50% {
-    transform: translate(3%, 4%) rotate(5deg) scale(1.12);
-  }
-
   100% {
-    transform: translate(-2%, 2%) rotate(-4deg) scale(1.05);
+    transform: translate(14px, -12px) scale(1.025);
   }
 }
 
-@keyframes liquidReflection {
+@keyframes glassFloat2 {
   0% {
-    transform: translateX(-8%) translateY(2%);
-    opacity: 0.35;
+    transform: translate(10px, -8px);
   }
-
   100% {
-    transform: translateX(8%) translateY(-3%);
-    opacity: 0.8;
+    transform: translate(-15px, 12px);
   }
 }
 
-/* FILTROS SVG */
-
-.filtros-liquid {
-  position: absolute;
-  width: 0;
-  height: 0;
-  overflow: hidden;
-  pointer-events: none;
+@keyframes glassFloat3 {
+  0% {
+    transform: translate(-5px, 10px);
+  }
+  100% {
+    transform: translate(8px, -10px);
+  }
 }
 
-/* CONTENIDO SIEMPRE SOBRE EL FONDO */
+/* CONTENIDO SOBRE EL FONDO */
 
 .encabezado-motion,
 .galeria-motion,
@@ -1062,9 +1009,14 @@
 /* ACCESIBILIDAD */
 
 @media (prefers-reduced-motion: reduce) {
-  .fondo-liquid-glass::before,
-  .fondo-liquid-glass::after {
+  .liquid-forma-1,
+  .liquid-forma-2,
+  .liquid-forma-3 {
     animation: none;
+  }
+
+  .fondo-liquid-glass {
+    transition: none;
   }
 }
 
@@ -1822,9 +1774,184 @@
 
   <!-- FONDO LIQUID GLASS -->
 
-<div class="fondo-liquid-glass" aria-hidden="true"></div>
 
-<svg class="filtros-liquid" aria-hidden="true">
+<!-- FONDO LIQUID CHROME GLASS -->
+
+<div class="fondo-liquid-glass" aria-hidden="true">
+
+  <svg viewBox="0 0 1600 1000"
+       preserveAspectRatio="xMidYMid slice">
+
+    <defs>
+
+      <!-- CRISTAL PLATEADO -->
+
+      <linearGradient id="chromeSilver"
+                      x1="0%" y1="0%"
+                      x2="100%" y2="100%">
+
+        <stop offset="0%" stop-color="#080a10"/>
+        <stop offset="18%" stop-color="#dce1ec"/>
+        <stop offset="25%" stop-color="#ffffff"/>
+        <stop offset="34%" stop-color="#424958"/>
+        <stop offset="46%" stop-color="#111522"/>
+        <stop offset="58%" stop-color="#e5e8ef"/>
+        <stop offset="67%" stop-color="#777c8b"/>
+        <stop offset="80%" stop-color="#080a11"/>
+        <stop offset="100%" stop-color="#c9cedb"/>
+
+      </linearGradient>
+
+      <!-- REFLEJO BLANCO -->
+
+      <linearGradient id="chromeHighlight"
+                      x1="0%" y1="0%"
+                      x2="100%" y2="100%">
+
+        <stop offset="0%" stop-color="#ffffff" stop-opacity="0"/>
+        <stop offset="45%" stop-color="#ffffff" stop-opacity=".95"/>
+        <stop offset="55%" stop-color="#dce3f0" stop-opacity=".8"/>
+        <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
+
+      </linearGradient>
+
+      <!-- REFLEJO LAVANDA -->
+
+      <linearGradient id="chromeLavender"
+                      x1="0%" y1="0%"
+                      x2="100%" y2="0%">
+
+        <stop offset="0%" stop-color="#8b78ad" stop-opacity="0"/>
+        <stop offset="45%" stop-color="#d9c1ed" stop-opacity=".8"/>
+        <stop offset="65%" stop-color="#a58bbf" stop-opacity=".5"/>
+        <stop offset="100%" stop-color="#8b78ad" stop-opacity="0"/>
+
+      </linearGradient>
+
+    </defs>
+
+    <!-- FORMA PRINCIPAL -->
+
+    <g class="liquid-forma-1">
+
+      <path
+        d="M 120,-120
+           C 20,80 80,330 300,430
+           C 480,515 650,480 810,365
+           C 970,250 1100,280 1260,420
+           C 1430,570 1580,650 1740,570
+           L 1740,760
+           C 1500,850 1330,700 1160,560
+           C 990,425 900,430 760,535
+           C 560,680 350,650 170,520
+           C -20,380 -80,120 120,-120 Z"
+        fill="url(#chromeSilver)"
+        fill-opacity=".22"
+        stroke="url(#chromeHighlight)"
+        stroke-width="5"/>
+
+      <path
+        d="M 120,-120
+           C 20,80 80,330 300,430
+           C 480,515 650,480 810,365
+           C 970,250 1100,280 1260,420
+           C 1430,570 1580,650 1740,570"
+        fill="none"
+        stroke="#f6f8ff"
+        stroke-width="3"
+        opacity=".85"/>
+
+      <path
+        d="M 140,-100
+           C 70,120 150,310 330,390
+           C 500,465 650,430 810,330"
+        fill="none"
+        stroke="#aeb8cb"
+        stroke-width="13"
+        opacity=".22"/>
+
+    </g>
+
+    <!-- SEGUNDA SUPERFICIE DE CRISTAL -->
+
+    <g class="liquid-forma-2">
+
+      <path
+        d="M 360,-150
+           C 180,100 240,370 470,490
+           C 650,590 770,520 900,420
+           C 1040,310 1190,340 1320,490
+           C 1430,620 1430,800 1300,1100
+           L 1510,1100
+           C 1660,790 1580,510 1400,330
+           C 1200,120 1040,180 850,330
+           C 690,460 550,390 480,280
+           C 390,140 410,-20 550,-150 Z"
+        fill="url(#chromeSilver)"
+        fill-opacity=".16"
+        stroke="url(#chromeHighlight)"
+        stroke-width="4"/>
+
+      <path
+        d="M 390,-100
+           C 240,130 300,360 490,460
+           C 670,560 790,475 920,380
+           C 1080,265 1200,310 1330,455"
+        fill="none"
+        stroke="#ffffff"
+        stroke-width="2"
+        opacity=".8"/>
+
+      <path
+        d="M 470,-100
+           C 340,100 380,300 550,400
+           C 690,480 800,430 940,330"
+        fill="none"
+        stroke="url(#chromeLavender)"
+        stroke-width="8"
+        opacity=".65"/>
+
+    </g>
+
+    <!-- REFLEJOS Y CURVAS DEL CRISTAL -->
+
+    <g class="liquid-forma-3">
+
+      <path
+        d="M -100,650
+           C 180,480 300,720 500,790
+           C 720,870 790,680 950,590
+           C 1150,480 1310,590 1440,760"
+        fill="none"
+        stroke="url(#chromeHighlight)"
+        stroke-width="17"
+        opacity=".7"/>
+
+      <path
+        d="M -100,650
+           C 180,480 300,720 500,790
+           C 720,870 790,680 950,590
+           C 1150,480 1310,590 1440,760"
+        fill="none"
+        stroke="#ffffff"
+        stroke-width="2.5"
+        opacity=".9"/>
+
+      <path
+        d="M 100,900
+           C 350,720 450,850 650,900
+           C 850,950 980,720 1140,700"
+        fill="none"
+        stroke="url(#chromeLavender)"
+        stroke-width="10"
+        opacity=".6"/>
+
+    </g>
+
+  </svg>
+
+</div>
+
   <filter id="liquidDistortion">
     <feTurbulence
       type="fractalNoise"
@@ -2332,8 +2459,9 @@ document.addEventListener("DOMContentLoaded", function() {
 
 });
 
-  /* =====================================
-   INTERACCIÓN LIQUID GLASS
+ 
+/* =====================================
+   INTERACCIÓN DEL CRISTAL CON EL CURSOR
 ===================================== */
 
 const seccionMotion = document.querySelector(".motion");
@@ -2341,30 +2469,51 @@ const fondoLiquid = document.querySelector(".fondo-liquid-glass");
 
 if (seccionMotion && fondoLiquid) {
 
-  seccionMotion.addEventListener("pointermove", function(event) {
+  const puedeUsarMouse = window.matchMedia(
+    "(hover: hover) and (pointer: fine)"
+  ).matches;
 
-    if (event.pointerType === "touch") return;
+  if (puedeUsarMouse) {
 
-    const rect = seccionMotion.getBoundingClientRect();
+    seccionMotion.addEventListener("pointermove", function(event) {
 
-    const x = (event.clientX - rect.left) / rect.width;
-    const y = (event.clientY - rect.top) / rect.height;
+      const rect = seccionMotion.getBoundingClientRect();
 
-    const movimientoX = (x - 0.5) * 2;
-    const movimientoY = (y - 0.5) * 2;
+      const x = (event.clientX - rect.left) / rect.width;
+      const y = (event.clientY - rect.top) / rect.height;
 
-    fondoLiquid.style.setProperty("--cursor-x", movimientoX);
-    fondoLiquid.style.setProperty("--cursor-y", movimientoY);
+      const diferenciaX = x - 0.5;
+      const diferenciaY = y - 0.5;
 
-  });
+      /* DESPLAZAMIENTO DEL CRISTAL */
 
-  seccionMotion.addEventListener("pointerleave", function() {
+      const movimientoX = diferenciaX * -32;
+      const movimientoY = diferenciaY * -24;
 
-    fondoLiquid.style.setProperty("--cursor-x", 0);
-    fondoLiquid.style.setProperty("--cursor-y", 0);
+      fondoLiquid.style.setProperty(
+        "--move-x",
+        movimientoX + "px"
+      );
 
-  });
+      fondoLiquid.style.setProperty(
+        "--move-y",
+        movimientoY + "px"
+      );
+
+    });
+
+    /* REGRESO SUAVE AL ESTADO ORIGINAL */
+
+    seccionMotion.addEventListener("pointerleave", function() {
+
+      fondoLiquid.style.setProperty("--move-x", "0px");
+      fondoLiquid.style.setProperty("--move-y", "0px");
+
+    });
+
+  }
 
 }
+
   
 </script>
