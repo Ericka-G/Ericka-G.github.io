@@ -49,18 +49,14 @@
       background-color: #080808;
     }
 
-    .portada::before {
-      content: "";
-      display: block;
-      width: 96%;
-      max-width: 1800px;
-      aspect-ratio: 2376 / 1480;
-      background-image: url("PORTADA-2026.png");
-      background-size: contain;
-      background-position: center;
-      background-repeat: no-repeat;
-      pointer-events: none;
-    }
+   .video-portada {
+  display: block;
+  width: 96%;
+  max-width: 1800px;
+  height: auto;
+  object-fit: contain;
+  pointer-events: none;
+}
 
 
     /* =====================================
@@ -1278,11 +1274,23 @@
        PORTADA
   ===================================== -->
 
-  <section class="portada" id="home">
+ <section class="portada" id="home">
 
+  <video
+    class="video-portada"
+    autoplay
+    muted
+    loop
+    playsinline
+    preload="auto">
 
-  </section>
+    <source src="portada_animada.mp4" type="video/mp4">
 
+    Tu navegador no puede reproducir este video.
+
+  </video>
+
+</section>
 
 
   <!-- =====================================
